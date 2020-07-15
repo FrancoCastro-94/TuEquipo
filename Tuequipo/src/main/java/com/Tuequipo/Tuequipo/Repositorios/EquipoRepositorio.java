@@ -1,6 +1,7 @@
 
 package com.Tuequipo.Tuequipo.Repositorios;
 
+import com.Tuequipo.Tuequipo.Enumeracion.Zonas;
 import com.Tuequipo.Tuequipo.entidades.Equipo;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,8 +19,8 @@ public interface EquipoRepositorio extends JpaRepository <Equipo,String>{
     @Query ("SELECT c FROM Equipo c WHERE c.mail=:mail")
     public Equipo buscarEquipoPorMail(@Param("mail") String mail);
     
-    @Query ("SELECT c FROM Equipo c WHERE c.zonas=:zonas")
-    public List<Equipo> buscarEquipoPorZona(@Param("zonas") List<String> zonas);
+//    @Query ("SELECT c FROM Equipo c WHERE c.zonas=:zonas")
+//    public List<Equipo> buscarEquipoPorZona(@Param("zonas") Zonas zonas);
 
     
 }

@@ -3,6 +3,9 @@ package com.Tuequipo.Tuequipo.entidades;
 
 import com.Tuequipo.Tuequipo.Enumeracion.CantidadJugadores;
 import com.Tuequipo.Tuequipo.Enumeracion.Categoria;
+import com.Tuequipo.Tuequipo.Enumeracion.Dias;
+import com.Tuequipo.Tuequipo.Enumeracion.Turno;
+import com.Tuequipo.Tuequipo.Enumeracion.Zonas;
 import com.Tuequipo.Tuequipo.enumeracion.Tipo;
 import java.util.Date;
 import java.util.List;
@@ -29,10 +32,12 @@ public class Equipo {
     
     @OneToOne
     private Foto foto;
-    
-    private List<String> turnos;
-    private List<String> zonas;
-    private List<String> dias;
+    @Enumerated(EnumType.STRING)
+    private Turno turno;
+    @Enumerated(EnumType.STRING)
+    private Zonas zona;
+    @Enumerated(EnumType.STRING)
+    private Dias dia;
     
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
@@ -45,20 +50,6 @@ public class Equipo {
     private Date alta;
     @Temporal(TemporalType.TIMESTAMP)
     private Date baja;
-
-//    /**
-//     * @return the id
-//     */
-//    public String getId() {
-//        return id;
-//    }
-//
-//    /**
-//     * @param id the id to set
-//     */
-//    public void setId(String id) {
-//        this.id = id;
-//    }
 
     /**
      * @return the nombre
@@ -145,6 +136,20 @@ public class Equipo {
     }
 
     /**
+     * @return the disponible
+     */
+    public Boolean getDisponible() {
+        return disponible;
+    }
+
+    /**
+     * @param disponible the disponible to set
+     */
+    public void setDisponible(Boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    /**
      * @return the foto
      */
     public Foto getFoto() {
@@ -159,17 +164,45 @@ public class Equipo {
     }
 
     /**
-     * @return the turnos
+     * @return the turno
      */
-    public List<String> getTurnos() {
-        return turnos;
+    public Turno getTurno() {
+        return turno;
     }
 
     /**
-     * @param turnos the turnos to set
+     * @param turno the turno to set
      */
-    public void setTurnos(List<String> turnos) {
-        this.turnos = turnos;
+    public void setTurno(Turno turno) {
+        this.turno = turno;
+    }
+
+    /**
+     * @return the zona
+     */
+    public Zonas getZona() {
+        return zona;
+    }
+
+    /**
+     * @param zona the zona to set
+     */
+    public void setZona(Zonas zona) {
+        this.zona = zona;
+    }
+
+    /**
+     * @return the dia
+     */
+    public Dias getDia() {
+        return dia;
+    }
+
+    /**
+     * @param dia the dia to set
+     */
+    public void setDia(Dias dia) {
+        this.dia = dia;
     }
 
     /**
@@ -184,34 +217,6 @@ public class Equipo {
      */
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
-    }
-
-    /**
-     * @return the zonas
-     */
-    public List<String> getZonas() {
-        return zonas;
-    }
-
-    /**
-     * @param zonas the zonas to set
-     */
-    public void setZonas(List<String> zonas) {
-        this.zonas = zonas;
-    }
-
-    /**
-     * @return the dias
-     */
-    public List<String> getDias() {
-        return dias;
-    }
-
-    /**
-     * @param dias the dias to set
-     */
-    public void setDias(List<String> dias) {
-        this.dias = dias;
     }
 
     /**
@@ -269,21 +274,7 @@ public class Equipo {
     public void setBaja(Date baja) {
         this.baja = baja;
     }
-
-    /**
-     * @return the disponible
-     */
-    public Boolean getDisponible() {
-        return disponible;
-    }
-
-    /**
-     * @param disponible the disponible to set
-     */
-    public void setDisponible(Boolean disponible) {
-        this.disponible = disponible;
-    }
-    
+  
     
     
 }
