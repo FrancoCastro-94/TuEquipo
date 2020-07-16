@@ -1,5 +1,5 @@
 package com.Tuequipo.Tuequipo.servicios;
-
+import com.Tuequipo.Tuequipo.Servicios.FotoServicio;
 import com.Tuequipo.Tuequipo.Enumeracion.CantidadJugadores;
 import com.Tuequipo.Tuequipo.Enumeracion.Categoria;
 import com.Tuequipo.Tuequipo.Enumeracion.Dias;

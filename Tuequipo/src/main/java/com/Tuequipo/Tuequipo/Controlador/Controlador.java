@@ -15,13 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
-
 @RequestMapping("/")
 public class Controlador {
 @Autowired
@@ -32,8 +32,18 @@ EquipoServicio equipoServicio;
         return "index.html";
     }
     
-    @GetMapping("/log")
-    public String cargaEquipo(ModelMap modelo,MultipartFile archivo, @RequestParam(required = true) String nombre, @RequestParam(required = true) String mail, @RequestParam(required = true) String descripcion, @RequestParam(required = true) String clave1, @RequestParam(required = true) String clave2, @RequestParam(required = true) String telefono1, @RequestParam(required = true) String telefono2, @RequestParam(required = true) Turno turno, @RequestParam(required = true) Zonas zona, @RequestParam Dias dia, @RequestParam(required = true) Tipo tipo, @RequestParam(required = true) Categoria categoria, @RequestParam(required = true) CantidadJugadores cantidadJugadores){
+    @GetMapping("/Registro")
+    public String registro(){
+        return "Registro.html";
+    }
+    
+    @GetMapping("/login")
+    public String login(){
+        return "login.html";
+        
+    }
+    @PostMapping("/login")
+    public String cargaEquipo(ModelMap modelo,MultipartFile archivo, @RequestParam(required = true) String nombre, @RequestParam String mail, @RequestParam String descripcion, @RequestParam(required = true) String clave1, @RequestParam(required = true) String clave2, @RequestParam String telefono1, @RequestParam String telefono2, @RequestParam Turno turno, @RequestParam Zonas zona, @RequestParam Dias dia, @RequestParam Tipo tipo, @RequestParam Categoria categoria, @RequestParam CantidadJugadores cantidadJugadores){
         try {
             equipoServicio.cargaEquipo(archivo, nombre, mail, descripcion, clave1, clave2, telefono1, telefono2, turno, zona, dia, tipo, categoria, cantidadJugadores);
         } catch (ErrorServicio ex) {
@@ -53,8 +63,9 @@ EquipoServicio equipoServicio;
             modelo.put("cantidadJugadores", cantidadJugadores);
             modelo.put("archivo", archivo);
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-            return "registro.html";
+            System.out.println("aca hay un error");
+            return "Registro.html";
         }
-        return "exito.html";
+        return "index.html";
 }
 }
