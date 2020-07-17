@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,15 +10,20 @@
     <nav class="navmain" id="navmain">
         <div class="container">
             <a class="nav1" href="/index.html">Tu Equipo</a>
-            </button>
         </div>
     </nav>
     <main class="main">
         <div class="login">
-            <form action="" method="GET" class="formularioLogin">Log In</form>
-            <input type="text" class="formularioLogin" id="usuario" placeholder="Usario" required><br>
-            <input type="password" class="formularioLogin" id="contraseña" placeholder="Contraseña" required><br>
+            <form action="/logincheck" method="POST" class="formularioLogin">
+                
+            <p th:if="${error !=null}" th:text="${error}" style="color:red;"></p>
+            <p th:if="${logout !=null}" th:text="${logout}" style="color:green;"></p>
+
+            <input type="text" class="formularioLogin" id="usuario" placeholder="Usuario" name="nombre" required><br>
+            <input type="password" class="formularioLogin" id="contraseña" placeholder="Contraseña" name="clave1" required><br>
             <input type="submit" class="formularioLogin">
+            
+            </form>
         </div>
     </main>
     <footer class="footermain">

@@ -37,12 +37,7 @@ EquipoServicio equipoServicio;
         return "Registro.html";
     }
     
-    @GetMapping("/login")
-    public String login(){
-        return "login.html";
-        
-    }
-    @PostMapping("/login")
+    @PostMapping("/registrar")
     public String cargaEquipo(ModelMap modelo,MultipartFile archivo, @RequestParam(required = true) String nombre, @RequestParam String mail, @RequestParam String descripcion, @RequestParam(required = true) String clave1, @RequestParam(required = true) String clave2, @RequestParam String telefono1, @RequestParam String telefono2, @RequestParam Turno turno, @RequestParam Zonas zona, @RequestParam Dias dia, @RequestParam Tipo tipo, @RequestParam Categoria categoria, @RequestParam CantidadJugadores cantidadJugadores){
         try {
             equipoServicio.cargaEquipo(archivo, nombre, mail, descripcion, clave1, clave2, telefono1, telefono2, turno, zona, dia, tipo, categoria, cantidadJugadores);
@@ -63,9 +58,20 @@ EquipoServicio equipoServicio;
             modelo.put("cantidadJugadores", cantidadJugadores);
             modelo.put("archivo", archivo);
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("aca hay un error");
             return "Registro.html";
         }
         return "index.html";
 }
+    
+    @GetMapping("/login")
+    public String login(@RequestParam(required = false) String error,@RequestParam(required = false) String logout, ModelMap model){
+        if(error != null){
+            model.put("error", "Usuario o clave incorrectos");
+        }
+        if(logout != null){
+            model.put("logout", "Ha salido correctamente");
+        }
+        return "login.html";
+    }
+    
 }
