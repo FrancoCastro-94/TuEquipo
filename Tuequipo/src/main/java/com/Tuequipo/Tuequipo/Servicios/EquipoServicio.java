@@ -136,7 +136,7 @@ public class EquipoServicio implements UserDetailsService {
         if (mail == null || mail.isEmpty()) {
             throw new ErrorServicio("El mail no puede ser nulo");
         }
-        if (clave1 == null || clave1.isEmpty() || clave1.length() >= 6) {
+        if (clave1 == null || clave1.isEmpty() || clave1.length() <= 6) {
             throw new ErrorServicio("La clave debe tener más de 6 caracteres");
         }
         if (!clave2.equals(clave1)) {

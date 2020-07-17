@@ -8,7 +8,6 @@ import com.Tuequipo.Tuequipo.Enumeracion.Turno;
 import com.Tuequipo.Tuequipo.Enumeracion.Zonas;
 import com.Tuequipo.Tuequipo.enumeracion.Tipo;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
