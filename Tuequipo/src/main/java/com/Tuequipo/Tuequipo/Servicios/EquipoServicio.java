@@ -40,7 +40,7 @@ public class EquipoServicio implements UserDetailsService {
 
     @Transactional
     public void cargaEquipo(MultipartFile archivo, String nombre, String mail, String descripcion, String clave1, String clave2, String telefono1, String telefono2, Turno turno, Zonas zona, Dias dia, Tipo tipo, Categoria categoria, CantidadJugadores cantidadJugadores) throws ErrorServicio {
-        validar(nombre, mail, clave1, clave2, telefono1, telefono2, turno, zona, dia, tipo, categoria, cantidadJugadores);
+        validar(nombre, clave1, clave2, telefono1, telefono2);
         Equipo equipo = new Equipo();
         equipo.setNombre(nombre);
         equipo.setMail(mail);
@@ -65,7 +65,7 @@ public class EquipoServicio implements UserDetailsService {
 
     @Transactional
     public void modificarEquipo(MultipartFile archivo, String nombre, String mail, String descripcion, String clave1, String clave2, String telefono1, String telefono2, Turno turno, Zonas zona, Dias dia, Tipo tipo, Categoria categoria, CantidadJugadores cantidadJugadores, Boolean disponible) throws ErrorServicio {
-        validar(nombre, mail, clave1, clave2, telefono1, telefono2, turno, zona, dia, tipo, categoria, cantidadJugadores);
+        validar(nombre, clave1, clave2, telefono1, telefono2);
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
         if (respuesta.isPresent()) {
             Equipo equipo = respuesta.get();
@@ -129,42 +129,21 @@ public class EquipoServicio implements UserDetailsService {
         }
     }
 
-    private void validar(String nombre, String mail, String clave1, String clave2, String telefono1, String telefono2, Turno turno, Zonas zona, Dias dia, Tipo tipo, Categoria categoria, CantidadJugadores cantidadJugadores) throws ErrorServicio {
-        if (nombre == null || nombre.isEmpty()) {
-            throw new ErrorServicio("El nombre del equipo no puede ser nulo");
+    private void validar(String nombre,  String clave1, String clave2, String telefono1, String telefono2) throws ErrorServicio {
+        
+        Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
+        if (respuesta.isPresent()){
+            throw new ErrorServicio("Ese nombre se encuentra en uso");
         }
-        if (mail == null || mail.isEmpty()) {
-            throw new ErrorServicio("El mail no puede ser nulo");
-        }
-        if (clave1 == null || clave1.isEmpty() || clave1.length() <= 6) {
+        
+        if ( clave1.length() <= 6) {
             throw new ErrorServicio("La clave debe tener más de 6 caracteres");
         }
         if (!clave2.equals(clave1)) {
             throw new ErrorServicio("Las claves deben coincidir");
         }
-        if (telefono1 == null || telefono1.isEmpty()) {
-            throw new ErrorServicio("El telefono del equipo no puede ser nulo");
-        }
-        if (telefono2 == null || telefono2.isEmpty()) {
-            throw new ErrorServicio("El telefono del equipo no puede ser nulo");
-        }
-        if (turno == null) {
-            throw new ErrorServicio("Debes elegir el turno para jugar");
-        }
-        if (zona == null) {
-            throw new ErrorServicio("Debes elegir en que zona queres jugar");
-        }
-        if (dia == null) {
-            throw new ErrorServicio("Debes elegir que dia queres jugar");
-        }
-        if (tipo == null) {
-            throw new ErrorServicio("Debes seleccionar que tipo de equipo jugará");
-        }
-        if (categoria == null) {
-            throw new ErrorServicio("Debes elegir la categoria de tu equipo");
-        }
-        if (cantidadJugadores == null) {
-            throw new ErrorServicio("Debes seleccionar que cantidad de jugadores jugarán");
+        if (telefono2.equals(telefono1)) {
+            throw new ErrorServicio("Los numeros de telefono deben ser distintos");
         }
     }
 
@@ -175,7 +154,7 @@ public class EquipoServicio implements UserDetailsService {
 
             List<GrantedAuthority> permisos = new ArrayList<>();
 
-            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLES_USUARIO_REGISTRADO");
+            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_USUARIO_REGISTRADO");
             permisos.add(p1);
 
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();

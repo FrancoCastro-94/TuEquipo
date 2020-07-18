@@ -7,11 +7,15 @@ import com.Tuequipo.Tuequipo.Enumeracion.Dias;
 import com.Tuequipo.Tuequipo.Enumeracion.Turno;
 import com.Tuequipo.Tuequipo.Enumeracion.Zonas;
 import com.Tuequipo.Tuequipo.Errores.ErrorServicio;
+import com.Tuequipo.Tuequipo.Servicios.BuscadorServicio;
+import com.Tuequipo.Tuequipo.entidades.Equipo;
 import com.Tuequipo.Tuequipo.enumeracion.Tipo;
 import com.Tuequipo.Tuequipo.servicios.EquipoServicio;
+import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +28,11 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/")
 public class Controlador {
-@Autowired
-EquipoServicio equipoServicio;
+    @Autowired
+    EquipoServicio equipoServicio;
+
+    @Autowired
+    BuscadorServicio buscadorServicio;
 
     @GetMapping("/")
     public String index(){
@@ -60,7 +67,7 @@ EquipoServicio equipoServicio;
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
             return "Registro.html";
         }
-        return "index.html";
+        return "RegistroExitoso.html";
 }
     
     @GetMapping("/login")
@@ -74,4 +81,16 @@ EquipoServicio equipoServicio;
         return "login.html";
     }
     
+    @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
+    @GetMapping("/buscador")
+    public String buscador(){
+        return "buscador.html";
+     }
+     
+    @PostMapping("/buscar")
+    public String buscar(ModelMap modelo,  @RequestParam String turno, @RequestParam String zona, @RequestParam String dia, @RequestParam String tipo, @RequestParam String categoria, @RequestParam String cantidadJugadores){
+        HashSet<Equipo> equipos = buscadorServicio.buscarEquipos(zona, categoria, cantidadJugadores, turno, tipo);
+        modelo.put("equipos", equipos);
+        return "resultado.html";
+    }
 }

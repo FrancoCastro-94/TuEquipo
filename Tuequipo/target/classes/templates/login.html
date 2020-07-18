@@ -1,35 +1,46 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
-    <link rel="stylesheet" href="Estilos.css">
+    <title>Tu Equipo, Encontra tu proximo rival</title>
+    <link href="/css/styles.css" rel="stylesheet">
 </head>
-<body>
-    <nav class="navmain" id="navmain">
-        <div class="container">
-            <a class="nav1" href="/index.html">Tu Equipo</a>
-        </div>
-    </nav>
-    <main class="main">
-        <div class="login">
-            <form action="/logincheck" method="POST" class="formularioLogin">
-                
-            <p th:if="${error !=null}" th:text="${error}" style="color:red;"></p>
-            <p th:if="${logout !=null}" th:text="${logout}" style="color:green;"></p>
 
-            <input type="text" class="formularioLogin" id="usuario" placeholder="Usuario" name="nombre" required><br>
-            <input type="password" class="formularioLogin" id="contraseña" placeholder="Contraseña" name="clave1" required><br>
-            <input type="submit" class="formularioLogin">
-            
-            </form>
-        </div>
-    </main>
-    <footer class="footermain">
-        <div class="containter2">
-            <p class="copyright">Copyright © 2020 - Tu Equipo</p>
-        </div>    
-    </footer>
+<body>
+    <div class="containermain">
+        <header>
+            <h1> <a class="titulo" href="/"> Tu Equipo</a> </h1>
+            <nav>
+                <div>
+                    <ul>
+                        <li> <a class="listanav" href="/Registro"> Registrarse</a></li>
+                        <li> <a class="listanav" href="/login"> Log in</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main class="main">
+            <div class="login">
+                <form action="/logincheck" method="POST" class="formularioLogin">
+
+                    <p th:if="${error !=null}" th:text="${error}" style="color:red;"></p>
+                    <p th:if="${logout !=null}" th:text="${logout}" style="color:green;"></p>
+
+                    <input type="text" class="formularioLogin" id="usuario" placeholder="Usuario" name="nombre" required><br>
+                    <input type="password" class="formularioLogin" id="contraseña" placeholder="Contraseña" name="clave1" required><br>
+                    <input type="submit" class="formularioLogin">
+
+                </form>
+            </div>
+        </main>
+        <footer>
+            <div>
+                <p> Copyright © 2020 - Tu Equipo </p>
+            </div>
+        </footer>
+    </div>
 </body>
+
 </html>
