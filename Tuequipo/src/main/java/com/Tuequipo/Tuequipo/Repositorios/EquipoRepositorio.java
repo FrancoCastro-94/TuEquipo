@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EquipoRepositorio extends JpaRepository <Equipo,String>{
-
-    @Query ("SELECT c FROM Equipo c WHERE c.nombre =:nombre")
+ 
+    @Query ("SELECT c FROM Equipo c  WHERE c.nombre = :nombre")
     public Equipo buscarEquipoPorNombre(@Param("nombre") String nombre);
     
-    @Query ("SELECT c FROM Equipo c WHERE c.mail=:mail")
+    @Query ("SELECT c FROM Equipo c WHERE c.mail= :mail")
     public Equipo buscarEquipoPorMail(@Param("mail") String mail);
     
     @Query ("SELECT c FROM Equipo c WHERE c.zona= :zona AND c.disponible= 1")
