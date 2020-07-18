@@ -79,9 +79,10 @@ public class Controlador {
         }
         return "login.html";
     }
+    
     @GetMapping("/buscador")
-     public String buscador(){
-         return "buscador.html";
+    public String buscador(){
+        return "buscador.html";
      }
      
     @PostMapping("/buscar")
