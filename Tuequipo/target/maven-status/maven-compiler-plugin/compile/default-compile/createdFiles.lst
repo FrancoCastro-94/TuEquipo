@@ -1,1 +1,17 @@
+com\Tuequipo\Tuequipo\entidades\Foto.class
+com\Tuequipo\Tuequipo\Servicios\BuscadorServicio.class
+com\Tuequipo\Tuequipo\Enumeracion\Categoria.class
+com\Tuequipo\Tuequipo\Errores\ErrorServicio.class
+com\Tuequipo\Tuequipo\Servicios\FotoServicio.class
+com\Tuequipo\Tuequipo\entidades\Equipo.class
+com\Tuequipo\Tuequipo\Enumeracion\Dias.class
+com\Tuequipo\Tuequipo\Repositorios\FotoRepositorio.class
+com\Tuequipo\Tuequipo\Enumeracion\CantidadJugadores.class
+com\Tuequipo\Tuequipo\Servicios\EquipoServicio.class
+com\Tuequipo\Tuequipo\Enumeracion\Turno.class
+com\Tuequipo\Tuequipo\Controlador\Controlador.class
+com\Tuequipo\Tuequipo\Repositorios\EquipoRepositorio.class
+com\Tuequipo\Tuequipo\Enumeracion\Tipo.class
+com\Tuequipo\Tuequipo\Seguridad\SeguridadConfiguracion.class
+com\Tuequipo\Tuequipo\Enumeracion\Zonas.class
 com\Tuequipo\Tuequipo\TuequipoApplication.class

@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -79,6 +80,8 @@ public class Controlador {
         }
         return "login.html";
     }
+    
+    @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
     @GetMapping("/buscador")
      public String buscador(){
          return "buscador.html";
@@ -88,6 +91,6 @@ public class Controlador {
     public String buscar(ModelMap modelo,  @RequestParam String turno, @RequestParam String zona, @RequestParam String dia, @RequestParam String tipo, @RequestParam String categoria, @RequestParam String cantidadJugadores){
         HashSet<Equipo> equipos = buscadorServicio.buscarEquipos(zona, categoria, cantidadJugadores, turno, tipo);
         modelo.put("equipos", equipos);
-        return "buscador.html";
+        return "resultado.html";
     }
 }

@@ -32,7 +32,6 @@ public class SeguridadConfiguracion extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         
         http.headers().frameOptions().sameOrigin().and()
-                .csrf().disable()
                 .authorizeRequests()
                         .antMatchers("/css/*", "/js/*", "/img/*", "/")
                         .permitAll()
@@ -41,12 +40,13 @@ public class SeguridadConfiguracion extends WebSecurityConfigurerAdapter {
                                 .loginProcessingUrl("/logincheck")
                                 .usernameParameter("nombre")
                                 .passwordParameter("clave1")
-                                .defaultSuccessUrl("/")
+                                .defaultSuccessUrl("/buscador")
                                 .permitAll()
                         .and().logout()
                                 .logoutUrl("/logout")
                                 .logoutSuccessUrl("/")
-                                .permitAll();
+                                .permitAll()
+                                .and().csrf().disable();
             
     }
 //@Override
