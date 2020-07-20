@@ -17,6 +17,8 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -37,6 +39,9 @@ public class EquipoServicio implements UserDetailsService {
 
     @Autowired
     private FotoServicio fotoServicio;
+    
+    @Autowired
+    private JavaMailSender mailSender;
 
     @Transactional
     public void cargaEquipo(MultipartFile archivo, String nombre, String mail, String descripcion, String clave1, String clave2, String telefono1, String telefono2, Turno turno, Zonas zona, Dias dia, Tipo tipo, Categoria categoria, CantidadJugadores cantidadJugadores) throws ErrorServicio {
@@ -59,6 +64,10 @@ public class EquipoServicio implements UserDetailsService {
         equipo.setAlta(new Date());
         Foto foto = fotoServicio.guardar(archivo);
         equipo.setFoto(foto);
+        String to = mail;
+        String subject = "Inscripcion en tu equipo";
+        String content = "Gracias por registrarte!";        
+        sendEmail(mail, to, subject, content);
 
         equipoRepositorio.save(equipo);
     }
@@ -169,4 +178,11 @@ public class EquipoServicio implements UserDetailsService {
         }
     }
 
+     public void sendEmail(String mail, String to, String subject, String content) {
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo(mail);
+        email.setSubject(subject);
+        email.setText(content);
+        mailSender.send(email);
+    }
 }
