@@ -7,18 +7,25 @@ import com.Tuequipo.Tuequipo.Enumeracion.Dias;
 import com.Tuequipo.Tuequipo.Enumeracion.Turno;
 import com.Tuequipo.Tuequipo.Enumeracion.Zonas;
 import com.Tuequipo.Tuequipo.Errores.ErrorServicio;
+import com.Tuequipo.Tuequipo.Repositorios.FotoRepositorio;
 import com.Tuequipo.Tuequipo.Servicios.BuscadorServicio;
 import com.Tuequipo.Tuequipo.entidades.Equipo;
+import com.Tuequipo.Tuequipo.entidades.Foto;
 import com.Tuequipo.Tuequipo.enumeracion.Tipo;
 import com.Tuequipo.Tuequipo.servicios.EquipoServicio;
 import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,10 +36,13 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/")
 public class Controlador {
     @Autowired
-    EquipoServicio equipoServicio;
+    private EquipoServicio equipoServicio;
 
     @Autowired
-    BuscadorServicio buscadorServicio;
+    private BuscadorServicio buscadorServicio;
+    
+    @Autowired
+    private FotoRepositorio fotoRepositorio;
 
     @GetMapping("/")
     public String index(){
@@ -42,6 +52,11 @@ public class Controlador {
     @GetMapping("/Registro")
     public String registro(){
         return "Registro.html";
+    }
+    
+    @GetMapping("/Perfil")
+    public String miPerfil(){
+        return "perfil.html";
     }
     
     @PostMapping("/registrar")
@@ -88,9 +103,18 @@ public class Controlador {
      }
      
     @PostMapping("/buscar")
-    public String buscar(ModelMap modelo,  @RequestParam String turno, @RequestParam String zona, @RequestParam String dia, @RequestParam String tipo, @RequestParam String categoria, @RequestParam String cantidadJugadores){
+    public String buscar(ModelMap modelo, @RequestParam String turno, @RequestParam String zona, @RequestParam String dia, @RequestParam String tipo, @RequestParam String categoria, @RequestParam String cantidadJugadores){
         HashSet<Equipo> equipos = buscadorServicio.buscarEquipos(zona, categoria, cantidadJugadores, turno, tipo);
         modelo.put("equipos", equipos);
         return "resultado.html";
     }
+    
+    @GetMapping("/cargar/{id}")
+    public ResponseEntity<byte[]> cargarfoto(@PathVariable String id){
+        Foto foto = fotoRepositorio.getOne(id);
+        final HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_JPEG);
+        return new ResponseEntity<>(foto.getContenido(), headers, HttpStatus.OK);
+    }
+
 }

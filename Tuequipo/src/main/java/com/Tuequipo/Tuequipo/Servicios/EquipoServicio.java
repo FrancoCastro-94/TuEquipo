@@ -73,13 +73,11 @@ public class EquipoServicio implements UserDetailsService {
     }
 
     @Transactional
-    public void modificarEquipo(MultipartFile archivo, String nombre, String mail, String descripcion, String clave1, String clave2, String telefono1, String telefono2, Turno turno, Zonas zona, Dias dia, Tipo tipo, Categoria categoria, CantidadJugadores cantidadJugadores, Boolean disponible) throws ErrorServicio {
-        validar(nombre, clave1, clave2, telefono1, telefono2);
+    public void modificarEquipo(MultipartFile archivo, String nombre, String descripcion, String clave1, String clave2, String telefono1, String telefono2, Turno turno, Zonas zona, Dias dia, CantidadJugadores cantidadJugadores) throws ErrorServicio {
+        revalidar( clave1, clave2, telefono1, telefono2);
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
         if (respuesta.isPresent()) {
             Equipo equipo = respuesta.get();
-            equipo.setNombre(nombre);
-            equipo.setMail(mail);
             equipo.setDescripcion(descripcion);
             String encriptada = new BCryptPasswordEncoder().encode(clave1);
             equipo.setClave(encriptada);
@@ -88,10 +86,8 @@ public class EquipoServicio implements UserDetailsService {
             equipo.setTurno(turno);
             equipo.setZona(zona);
             equipo.setDia(dia);
-            equipo.setTipo(tipo);
-            equipo.setCategoria(categoria);
             equipo.setCantidadJugadores(cantidadJugadores);
-            equipo.setDisponible(disponible);
+            
             String idFoto = null;
             if (equipo.getFoto() != null) {
                 idFoto = equipo.getFoto().getId();
@@ -144,6 +140,19 @@ public class EquipoServicio implements UserDetailsService {
         if (respuesta.isPresent()){
             throw new ErrorServicio("Ese nombre se encuentra en uso");
         }
+        
+        if ( clave1.length() <= 6) {
+            throw new ErrorServicio("La clave debe tener más de 6 caracteres");
+        }
+        if (!clave2.equals(clave1)) {
+            throw new ErrorServicio("Las claves deben coincidir");
+        }
+        if (telefono2.equals(telefono1)) {
+            throw new ErrorServicio("Los numeros de telefono deben ser distintos");
+        }
+    }
+    
+    private void revalidar(  String clave1, String clave2, String telefono1, String telefono2) throws ErrorServicio {
         
         if ( clave1.length() <= 6) {
             throw new ErrorServicio("La clave debe tener más de 6 caracteres");

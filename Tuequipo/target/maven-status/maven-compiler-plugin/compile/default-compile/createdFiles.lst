@@ -6,6 +6,7 @@ com\Tuequipo\Tuequipo\entidades\Equipo.class
 com\Tuequipo\Tuequipo\Enumeracion\Dias.class
 com\Tuequipo\Tuequipo\Repositorios\FotoRepositorio.class
 com\Tuequipo\Tuequipo\Enumeracion\CantidadJugadores.class
+com\Tuequipo\Tuequipo\Controlador\UsuarioControlador.class
 com\Tuequipo\Tuequipo\Enumeracion\Turno.class
 com\Tuequipo\Tuequipo\Controlador\Controlador.class
 com\Tuequipo\Tuequipo\Repositorios\EquipoRepositorio.class

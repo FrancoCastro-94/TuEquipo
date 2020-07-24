@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mi Perfil</title>
+        <link href="/css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="containermain">
+            <header>
+                <h1> <a class="titulo" href="/buscador"> Tu Equipo</a> </h1>
+                <nav>
+                    <div>
+                        <ul>
+                            <li> <a class="listanav" href="/logout"> Salir</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <main>
+                <div>
+                    <h3 class="tituloRegistro">Modifique su Perfil ♥ ♥ ♥</h3>
+                    <div>    
+     
+                    </div>
+                    <div class="foto">
+                        <img th:src="@{/cargar/__${equipo.foto.id}__}" width="100px" height="100px" >
+                    </div>
+                    <form class="cajaRegistro" action="/usuario/actualizar-perfil" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="nombre" th:value="${equipo.nombre}">
+                        
+                        <p class="formularioRegistro"  name="nombre" th:text="${equipo.nombre}"></p><br>
+                        <p class="formularioRegistro"  name="tipo" th:text="${equipo.tipo}"></p><br>
+                        <p class="formularioRegistro"  name="categoria" th:text="${equipo.categoria}"></p><br>
+                        <p class="formularioRegistro"  name="mail" th:text="${equipo.mail}"></p><br>
+
+                        <input class="formularioRegistro" type="tel"  name="numero1" required th:value="${equipo.numero1}"><br>
+                        <input class="formularioRegistro" type="tel"  name="numero2" required th:value="${equipo.numero2}" ><br>
+                        <input class="formularioRegistro" type="password"  name="clave1" required ><br>
+                        <input class="formularioRegistro" type="password" name="clave2" required ><br>
+                        <input class="formularioRegistro" type="text" name="descripcion" th:value="${equipo.descripcion}"><br>   
+
+                        <select class="formularioRegistro" name="turno" type="text" id="turno" th:value="${equipo.turno}">
+                            <option th:value="${equipo.turno}" th:text="${equipo.turno}" selected></option>
+                            <option value="MAÑANA">MAÑANA</option>
+                            <option value="TARDE">TARDE</option>
+                            <option value="NOCHE">NOCHE</option>
+                        </select><br>
+                        <select class="formularioRegistro" name="zona" id="zona" th:value="${equipo.zona}">
+                            <option th:value="${equipo.zona}" th:text="${equipo.zona}" selected></option>
+                            <option value="CAPITAL"> CAPITAL</option>
+                            <option value="GODOY_CRUZ"> GODOY CRUZ</option>
+                            <option value="GUAYMALLEN"> GUAYMALLEN</option>
+                            <option value="LAS_HERAS"> LAS HERAS</option>
+                            <option value="LUJAN_DE_CUYO"> LUJAN DE CUYO</option>
+                            <option value="MAIPU">MAIPU</option>
+                        </select><br>
+                        <select class="formularioRegistro" name="dia" id="dia" th:value="${equipo.dia}">
+                            <option th:value="${equipo.dia}" th:text="${equipo.dia}" selected ></option>
+                            <option value="LUNES"> LUNES</option>
+                            <option value="MARTES">MARTES</option>
+                            <option value="MIERCOLES"> MIERCOLES</option>
+                            <option value="JUEVES"> JUEVES</option>
+                            <option value="VIERNES"> VIERNES</option>
+                            <option value="SABADO"> SABADO</option>
+                            <option value="DOMINGO"> DOMINGO</option>
+                        </select><br>
+                        <select class="formularioRegistro" name="cantidadJugadores" id="cantidadJugadores" th:value="${equipo.cantidadJugadores}">
+                            <option th:value="${equipo.cantidadJugadores}" th:text="${equipo.cantidadJugadores}" selected ></option>
+                            <option value="CINCO">5</option>
+                            <option value="SIETE">7</option>
+                            <option value="ONCE">11</option>
+                        </select><br>
+                        <input class="formularioRegistro1" type="file" name="archivo" size="30"><br>
+                        <input class="formularioRegistro" type="submit" value="Actualizar datos">
+                        <p th:text="${exito}" style="color:white;"></p>
+
+                    </form>
+
+                </div>
+            </main>
+            <footer>
+                <div>
+                    <p> Copyright © 2020 - Tu Equipo </p>
+                </div>
+            </footer>
+        </div>
+    </body>
+
+</html>
