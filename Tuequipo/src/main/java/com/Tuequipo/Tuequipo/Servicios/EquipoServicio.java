@@ -66,7 +66,7 @@ public class EquipoServicio implements UserDetailsService {
         equipo.setFoto(foto);
         String to = mail;
         String subject = "Inscripcion en tu equipo";
-        String content = "Gracias por registrarte!";        
+        String content = "Gracias por registrarte! El nombre de tu equipo es: " + equipo.getNombre();        
         sendEmail(mail, to, subject, content);
 
         equipoRepositorio.save(equipo);
