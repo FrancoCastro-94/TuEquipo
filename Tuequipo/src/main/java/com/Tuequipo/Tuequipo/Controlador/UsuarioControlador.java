@@ -47,7 +47,7 @@ public class UsuarioControlador {
             equipoServicio.modificarEquipo(archivo, nombre, descripcion, clave1, clave2, numero1, numero2, turno, zona, dia, cantidadJugadores);
             session.setAttribute("usuariosession", equipo);
             modelo.put("exito", "Modificacion exitosa");
-         
+            modelo.addAttribute("equipo", equipo);
             return "perfil.html";
         } catch (ErrorServicio ex) {
             System.out.println(ex.getMessage());

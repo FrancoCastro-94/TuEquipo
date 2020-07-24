@@ -88,13 +88,10 @@ public class EquipoServicio implements UserDetailsService {
             equipo.setDia(dia);
             equipo.setCantidadJugadores(cantidadJugadores);
             
-            String idFoto = null;
-            if (equipo.getFoto() != null) {
-                idFoto = equipo.getFoto().getId();
+            if(!archivo.isEmpty()){
+                Foto foto = fotoServicio.actualizar(equipo.getFoto().getId(), archivo);
+                equipo.setFoto(foto);
             }
-            Foto foto = fotoServicio.actualizar(idFoto, archivo);
-            equipo.setFoto(foto);
-
             equipoRepositorio.save(equipo);
         } else {
             throw new ErrorServicio("No se encontro el equipo solicitado");
