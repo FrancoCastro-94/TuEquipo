@@ -6,8 +6,6 @@ import com.Tuequipo.Tuequipo.Enumeracion.Dias;
 import com.Tuequipo.Tuequipo.Enumeracion.Turno;
 import com.Tuequipo.Tuequipo.Enumeracion.Zonas;
 import com.Tuequipo.Tuequipo.Errores.ErrorServicio;
-import com.Tuequipo.Tuequipo.Repositorios.EquipoRepositorio;
-import com.Tuequipo.Tuequipo.Servicios.FotoServicio;
 import com.Tuequipo.Tuequipo.entidades.Equipo;
 import com.Tuequipo.Tuequipo.servicios.EquipoServicio;
 import javax.servlet.http.HttpSession;
@@ -26,17 +24,12 @@ public class UsuarioControlador {
     
     @Autowired
     private EquipoServicio equipoServicio;
-    @Autowired
-    private FotoServicio fotoServicio;
-    @Autowired
-    private EquipoRepositorio equipoRepositorio;
     
     @GetMapping("/mostrarPerfil")
     public String mostrarPerfil(ModelMap modelo, @RequestParam String nombre){
         Equipo equipo = equipoServicio.buscarPorId(nombre);
         modelo.addAttribute("equipo", equipo);
-
-            return "perfil.html";
+        return "perfil.html";
     }
     
     @PostMapping("/actualizar-perfil")
@@ -54,7 +47,7 @@ public class UsuarioControlador {
             session.setAttribute("usuariosession", equipo);
             return "perfil.html";
         }
-            
+        
     }
     
 }

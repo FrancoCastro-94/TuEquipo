@@ -18,19 +18,7 @@ public interface EquipoRepositorio extends JpaRepository <Equipo,String>{
     @Query ("SELECT c FROM Equipo c WHERE c.mail= :mail")
     public Equipo buscarEquipoPorMail(@Param("mail") String mail);
     
-    @Query ("SELECT c FROM Equipo c WHERE c.zona= :zona AND c.disponible= 1")
-    public List<Equipo> buscarEquipoPorZona(@Param("zona") String zona);
-    
-    @Query ("SELECT c FROM Equipo c WHERE c.categoria= :categoria AND c.disponible= 1")
-    public List<Equipo> buscarEquipoPorCategoria(@Param("categoria") String categoria);
-    
-    @Query ("SELECT c FROM Equipo c WHERE c.cantidadJugadores= :cantidadJugadores AND c.disponible= 1")
-    public List<Equipo> buscarEquipoCantidadJugadores(@Param("cantidadJugadores") String cantidadJugadores);
-    
-    @Query ("SELECT c FROM Equipo c WHERE c.turno= :turno AND c.disponible= 1")
-    public List<Equipo> buscarEquipoTurno(@Param("turno") String turno);
-
-    @Query ("SELECT c FROM Equipo c WHERE c.tipo= :tipo AND c.disponible= 1")
-    public List<Equipo> buscarEquipoTipo(@Param("tipo") String tipo);
+    @Query ("SELECT c FROM Equipo c WHERE c.disponible = 1")
+    public List<Equipo> buscarEquipoDisponible();
     
 }

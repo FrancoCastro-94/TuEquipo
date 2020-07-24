@@ -45,8 +45,11 @@ public class EquipoServicio implements UserDetailsService {
 
     @Transactional
     public void cargaEquipo(MultipartFile archivo, String nombre, String mail, String descripcion, String clave1, String clave2, String telefono1, String telefono2, Turno turno, Zonas zona, Dias dia, Tipo tipo, Categoria categoria, CantidadJugadores cantidadJugadores) throws ErrorServicio {
+        
         validar(nombre, clave1, clave2, telefono1, telefono2);
+        
         Equipo equipo = new Equipo();
+        
         equipo.setNombre(nombre);
         equipo.setMail(mail);
         equipo.setDescripcion(descripcion);
@@ -62,8 +65,10 @@ public class EquipoServicio implements UserDetailsService {
         equipo.setCantidadJugadores(cantidadJugadores);
         equipo.setDisponible(Boolean.TRUE);
         equipo.setAlta(new Date());
+        
         Foto foto = fotoServicio.guardar(archivo);
         equipo.setFoto(foto);
+        
         String to = mail;
         String subject = "Inscripcion en tu equipo";
         String content = "Gracias por registrarte!";        
@@ -74,10 +79,14 @@ public class EquipoServicio implements UserDetailsService {
 
     @Transactional
     public void modificarEquipo(MultipartFile archivo, String nombre, String descripcion, String clave1, String clave2, String telefono1, String telefono2, Turno turno, Zonas zona, Dias dia, CantidadJugadores cantidadJugadores) throws ErrorServicio {
+        
         revalidar( clave1, clave2, telefono1, telefono2);
+        
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
         if (respuesta.isPresent()) {
+            
             Equipo equipo = respuesta.get();
+            
             equipo.setDescripcion(descripcion);
             String encriptada = new BCryptPasswordEncoder().encode(clave1);
             equipo.setClave(encriptada);
@@ -92,6 +101,7 @@ public class EquipoServicio implements UserDetailsService {
                 Foto foto = fotoServicio.actualizar(equipo.getFoto().getId(), archivo);
                 equipo.setFoto(foto);
             }
+            
             equipoRepositorio.save(equipo);
         } else {
             throw new ErrorServicio("No se encontro el equipo solicitado");
@@ -104,12 +114,12 @@ public class EquipoServicio implements UserDetailsService {
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
 
         if (respuesta.isPresent()) {
-
             Equipo equipo = respuesta.get();
+            
             equipo.setBaja(null);
             equipo.setDisponible(Boolean.TRUE);
+            
             equipoRepositorio.save(equipo);
-
         } else {
             throw new ErrorServicio("No se encontro el equipo solicitado");
         }
@@ -118,6 +128,10 @@ public class EquipoServicio implements UserDetailsService {
     public Equipo buscarPorId(String nombre) {
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
         return respuesta.get();
+    }
+    
+    public List<Equipo> buscarDisponibles(){
+        return equipoRepositorio.buscarEquipoDisponible();
     }
 
     @Transactional
@@ -131,8 +145,7 @@ public class EquipoServicio implements UserDetailsService {
         }
     }
 
-    private void validar(String nombre,  String clave1, String clave2, String telefono1, String telefono2) throws ErrorServicio {
-        
+    private void validar(String nombre,  String clave1, String clave2, String telefono1, String telefono2) throws ErrorServicio { 
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
         if (respuesta.isPresent()){
             throw new ErrorServicio("Ese nombre se encuentra en uso");
@@ -150,7 +163,6 @@ public class EquipoServicio implements UserDetailsService {
     }
     
     private void revalidar(  String clave1, String clave2, String telefono1, String telefono2) throws ErrorServicio {
-        
         if ( clave1.length() <= 6) {
             throw new ErrorServicio("La clave debe tener más de 6 caracteres");
         }
@@ -178,7 +190,6 @@ public class EquipoServicio implements UserDetailsService {
 
             User user = new User(equipo.getNombre(), equipo.getClave(), permisos);
             return user;
-
         } else {
             return null;
         }
