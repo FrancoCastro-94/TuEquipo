@@ -11,7 +11,15 @@
     <body>
         <div class="containermain">
             <header>
-                <h1> <a class="titulo" href="/buscador"> Tu Equipo</a> </h1>
+                <h1>
+                    <a name='lupa' class="titulo" href="/buscador"> 
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                        </svg>
+                    </a>
+                    <label for="lupa" style="color:white" onMouseover="this.style.color='orange'" onMouseout="this.style.color='white'">Busca Tu Rival</label>
+                </h1>
                 <nav>
                     <div>
                         <ul>
@@ -38,20 +46,18 @@
                         <p class="formularioRegistro"  name="categoria" th:text="${equipo.categoria}"></p><br>
                         <p class="formularioRegistro"  name="mail" th:text="${equipo.mail}"></p><br>
 
-                        <input class="formularioRegistro" type="tel"  name="numero1" required th:value="${equipo.numero1}"><br>
-                        <input class="formularioRegistro" type="tel"  name="numero2" required th:value="${equipo.numero2}" ><br>
-                        <input class="formularioRegistro" type="password"  name="clave1" required ><br>
-                        <input class="formularioRegistro" type="password" name="clave2" required ><br>
-                        <input class="formularioRegistro" type="text" name="descripcion" th:value="${equipo.descripcion}"><br>   
+                        <input class="formularioRegistro" type="tel"  name="numero1" placeholder="Telefono capitan" required th:value="${equipo.numero1}"><br>
+                        <input class="formularioRegistro" type="tel"  name="numero2" placeholder="Telefono co-capitan" required th:value="${equipo.numero2}" ><br>
+                        <input class="formularioRegistro" type="password" name="clave1" placeholder="Contraseña" required ><br>
+                        <input class="formularioRegistro" type="password" name="clave2" placeholder="Repetir contraseña" required ><br>
+                        <input class="formularioRegistro" type="text" name="descripcion" placeholder="Descripcion de su equipo" th:value="${equipo.descripcion}"><br>   
 
-                        <select class="formularioRegistro" name="turno" type="text" id="turno" th:value="${equipo.turno}">
-                            <option th:value="${equipo.turno}" th:text="${equipo.turno}" selected></option>
+                        <select class="formularioRegistro" name="turno" type="text" id="turno">  
                             <option value="MAÑANA">MAÑANA</option>
                             <option value="TARDE">TARDE</option>
                             <option value="NOCHE">NOCHE</option>
                         </select><br>
-                        <select class="formularioRegistro" name="zona" id="zona" th:value="${equipo.zona}">
-                            <option th:value="${equipo.zona}" th:text="${equipo.zona}" selected></option>
+                        <select class="formularioRegistro" name="zona" id="zona">
                             <option value="CAPITAL"> CAPITAL</option>
                             <option value="GODOY_CRUZ"> GODOY CRUZ</option>
                             <option value="GUAYMALLEN"> GUAYMALLEN</option>
@@ -59,8 +65,7 @@
                             <option value="LUJAN_DE_CUYO"> LUJAN DE CUYO</option>
                             <option value="MAIPU">MAIPU</option>
                         </select><br>
-                        <select class="formularioRegistro" name="dia" id="dia" th:value="${equipo.dia}">
-                            <option th:value="${equipo.dia}" th:text="${equipo.dia}" selected ></option>
+                        <select class="formularioRegistro" name="dia" id="dia">
                             <option value="LUNES"> LUNES</option>
                             <option value="MARTES">MARTES</option>
                             <option value="MIERCOLES"> MIERCOLES</option>
@@ -69,8 +74,7 @@
                             <option value="SABADO"> SABADO</option>
                             <option value="DOMINGO"> DOMINGO</option>
                         </select><br>
-                        <select class="formularioRegistro" name="cantidadJugadores" id="cantidadJugadores" th:value="${equipo.cantidadJugadores}">
-                            <option th:value="${equipo.cantidadJugadores}" th:text="${equipo.cantidadJugadores}" selected ></option>
+                        <select class="formularioRegistro" name="cantidadJugadores" id="cantidadJugadores"> 
                             <option value="CINCO">5</option>
                             <option value="SIETE">7</option>
                             <option value="ONCE">11</option>
@@ -89,6 +93,40 @@
                 </div>
             </footer-->
         </div>
+        <script th:inline="javascript">
+            var turno = [[${equipo.turno}]];
+            var sel = document.getElementById("turno");
+            for ( var i = 0, len = sel.length; i < len; i++ ) { 
+                if (sel[i].value === turno) {
+                    sel[i].selected = true;
+                    break;
+                }
+            }
+            var cantJugadores = [[${equipo.cantidadJugadores}]];
+            var sel2 = document.getElementById("cantidadJugadores");
+            for ( var i = 0, len = sel2.length; i < len; i++ ) { 
+                if (sel2[i].value === cantJugadores) {
+                    sel2[i].selected = true;
+                    break;
+                }
+            }
+            var zona = [[${equipo.zona}]];
+            var sel3 = document.getElementById("zona");
+            for ( var i = 0, len = sel3.length; i < len; i++ ) { 
+                if (sel3[i].value === zona) {
+                    sel3[i].selected = true;
+                    break;
+                }
+            }
+            var dia = [[${equipo.dia}]];
+            var sel4 = document.getElementById("dia");
+            for ( var i = 0, len = sel4.length; i < len; i++ ) { 
+                if (sel4[i].value === dia) {
+                    sel4[i].selected = true;
+                    break;
+                }
+            }
+        </script>
     </body>
 
 </html>
