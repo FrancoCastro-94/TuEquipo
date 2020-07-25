@@ -153,6 +153,65 @@ div h2{
     transform: translateX(-50%) translateY(-50);
 }
 
+/* buscador */
+
+body{
+    background: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+.listanav{
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+header h1{
+    text-align: left;
+    float: left;
+    margin-left: 40px;
+    line-height: 100px;
+}
+
+.titulo{
+    color: white;
+}
+
+nav{
+    float: right;
+}
+
+.tablas{
+        width: 50%;
+        float: left;
+}
+.filtros{
+        width: 50%;
+        float: left;
+}
+.filtros h3{
+        text-align: start;
+}
+.filtros-izq{
+        width: 25%;
+        float: left;
+}
+.filtros-der{
+        width: 75%;
+        float: left;
+}
+.table, td, th {  
+        border: 1px solid #ddd;
+        text-align: left;
+}
+.table {
+        border-collapse: collapse;
+        width: auto;
+}
+.th, td {
+            padding: 10px;
+        }
+
+
 @media (max-width: 450px){
 
     .titulo{
