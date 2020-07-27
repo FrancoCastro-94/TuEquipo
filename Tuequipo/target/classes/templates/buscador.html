@@ -9,45 +9,12 @@
     <link href="/css/styles.css" rel="stylesheet">
     
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    
-    <!--style>
-        .tablas{
-            width: 50%;
-            float: left;
-        }
-        .filtros{
-            width: 50%;
-            float: left;
-        }
-        .filtros h3{
-            text-align: start;
-        }
-        .filtros-izq{
-            width: 25%;
-            float: left;
-        }
-        .filtros-der{
-            width: 75%;
-            float: left;
-        }
-        table, td, th {  
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-        table {
-            border-collapse: collapse;
-            width: auto;
-        }
-        th, td {
-            padding: 10px;
-        }
-    </style-->
 
 </head>
 
 <body>
     <div class="containermain"> 
-    <div>
+    <!--div-->
         <header>
             <h1> <a class="titulo" href="/"> Tu Equipo</a> </h1>
             <nav>
@@ -62,134 +29,134 @@
         </header>
     
         <main>
-            <div class="filtros">
-                
-                <h3>Equipos Disponibles</h3>
-                
-                <div class="filtros-izq">
-                    <p>Filtrar por zonas:</p>
-                
-                    <form>
-                        <label>
-                        <input type="checkbox" name="CAPITAL" value="CAPITAL" id="CAPITAL" /> Capital</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="GODOY_CRUZ" value="GODOY_CRUZ" id="GODOY_CRUZ" /> Godoy Cruz</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="GUAYMALLEN" value="GUAYMALLEN" id="GUAYMALLEN" /> Guaymallen</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="LAS_HERAS" value="LAS_HERAS" id="LAS_HERAS" /> Las Heras</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="LUJAN_DE_CUYO" value="LUJAN_DE_CUYO" id="LUJAN_DE_CUYO" /> Lujan de Cuyo</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="MAIPU" value="MAIPU" id="MAIPU" /> Maipu</label>
-                    </form>
+            <article>
+                <div class="filtros">
+
+      
+                    <fieldset>
+                    <div class="filtros-izq">
+                        
+                        <b><p class="p">Filtrar por zonas:</p></b>
+                            <form>
+                                <label>
+                                <input type="checkbox" name="CAPITAL" value="CAPITAL" id="CAPITAL" /> Capital</label>
+                                <br>
+                                <label>
+                                <input type="checkbox" name="GODOY_CRUZ" value="GODOY_CRUZ" id="GODOY_CRUZ" /> Godoy Cruz</label>
+                                <br>
+                                <label>
+                                <input type="checkbox" name="GUAYMALLEN" value="GUAYMALLEN" id="GUAYMALLEN" /> Guaymallen</label>
+                                <br>
+                                <label>
+                                <input type="checkbox" name="LAS_HERAS" value="LAS_HERAS" id="LAS_HERAS" /> Las Heras</label>
+                                <br>
+                                <label>
+                                <input type="checkbox" name="LUJAN_DE_CUYO" value="LUJAN_DE_CUYO" id="LUJAN_DE_CUYO" /> Lujan de Cuyo</label>
+                                <br>
+                                <label>
+                                <input type="checkbox" name="MAIPU" value="MAIPU" id="MAIPU" /> Maipu</label>
+                            </form>
                     
-                    <p>Filtrar por tipo:</p>
-                    
-                    <form>
-                        <label>
-                        <input type="checkbox" name="MASCULINO" value="MASCULINO" id="MASCULINO" /> Masculino</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="FEMENINO" value="FEMENINO" id="FEMENINO" /> Femenino</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="MIXTO" value="MIXTO" id="MIXTO" /> Mixto</label>
-                    </form>
+                        <b><p class="p">Filtrar por tipo:</p></b>
+                            <form>
+                                <label>
+                                <input type="checkbox" name="MASCULINO" value="MASCULINO" id="MASCULINO" /> Masculino</label>
+                                <br>
+                                <label>
+                                <input type="checkbox" name="FEMENINO" value="FEMENINO" id="FEMENINO" /> Femenino</label>
+                                <br>
+                                <label>
+                                <input type="checkbox" name="MIXTO" value="MIXTO" id="MIXTO" /> Mixto</label>
+                            </form>
     
-                    <p>Filtrar por turno:</p>
+                        <b><p class="p">Filtrar por turno:</p></b>
+                            <form>
+                                <label>
+                                <input type="checkbox" name="MAÑANA" value="MAÑANA" id="MAÑANA" /> Mañana</label>
+                                <br>
+                                <label>
+                                <input type="checkbox" name="TARDE" value="TARDE" id="TARDE" /> Tarde</label>
+                                <br>
+                                <label>
+                                <input type="checkbox" name="NOCHE" value="NOCHE" id="NOCHE" /> Noche</label>
+                            </form>
+                    </div>
                     
-                    <form>
-                        <label>
-                        <input type="checkbox" name="MAÑANA" value="MAÑANA" id="MAÑANA" /> Mañana</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="TARDE" value="TARDE" id="TARDE" /> Tarde</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="NOCHE" value="NOCHE" id="NOCHE" /> Noche</label>
-                    </form>
+                    <div class="filtros-der">
+                    
+                        <b><p class="p">Filtrar por días:</p></b>
+                            <form>
+                               <label>
+                               <input type="checkbox" name="LUNES" value="LUNES" id="LUNES" /> Lunes</label>
+                               <br>
+                               <label>
+                               <input type="checkbox" name="MARTES" value="MARTES" id="MARTES" /> Martes</label>
+                               <br>
+                               <label>
+                               <input type="checkbox" name="MIERCOLES" value="MIERCOLES" id="MIERCOLES" /> Miercoles</label>
+                               <br>
+                               <label>
+                               <input type="checkbox" name="JUEVES" value="JUEVES" id="JUEVES" /> Jueves</label>
+                               <br>
+                               <label>
+                               <input type="checkbox" name="VIERNES" value="VIERNES" id="VIERNES" /> Viernes</label>
+                               <br>
+                                <label>
+                                <input type="checkbox" name="SABADO" value="SABADO" id="SABADO" /> Sabado</label>
+                                <br>
+                                <label>
+                                <input type="checkbox" name="DOMINGO" value="DOMINGO" id="DOMINGO" /> Domingo</label>
+                            </form>
     
+                        <b><p class="p">Filtrar por categoría:</p></b>
+                            <form>
+                               <label>
+                               <input type="checkbox" name="JUVENIL" value="JUVENIL" id="JUVENIL" /> Juvenil</label>
+                               <br>
+                               <label>
+                               <input type="checkbox" name="INTERMEDIO" value="INTERMEDIO" id="INTERMEDIO" /> Intermedio</label>
+                               <br>
+                               <label>
+                               <input type="checkbox" name="SENIOR" value="SENIOR" id="SENIOR" /> Senior</label>
+                           </form>
+    
+                        <b><p class="p">Filtrar por cant de jugadores:</p></b>
+                            <form>
+                                <label>
+                                <input type="checkbox" name="CINCO" value="CINCO" id="CINCO" /> 5</label>
+                                <br>
+                                <label>
+                                <input type="checkbox" name="SIETE" value="SIETE" id="SIETE" /> 7</label>
+                                <br>
+                                <label>
+                                <input type="checkbox" name="ONCE" value="ONCE" id="ONCE" /> 11</label>
+                            </form>          
+                    </div>
+                    </fieldset>
                 </div>
-    
-                <div class="filtros-der">
-                    <p>Filtrar por días:</p>
+            </article>
                 
-                    <form>
-                        <label>
-                        <input type="checkbox" name="LUNES" value="LUNES" id="LUNES" /> Lunes</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="MARTES" value="MARTES" id="MARTES" /> Martes</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="MIERCOLES" value="MIERCOLES" id="MIERCOLES" /> Miercoles</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="JUEVES" value="JUEVES" id="JUEVES" /> Jueves</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="VIERNES" value="VIERNES" id="VIERNES" /> Viernes</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="SABADO" value="SABADO" id="SABADO" /> Sabado</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="DOMINGO" value="DOMINGO" id="DOMINGO" /> Domingo</label>
-                    </form>
-    
-                    <p>Filtrar por categoría:</p>
-                    
-                    <form>
-                        <label>
-                        <input type="checkbox" name="JUVENIL" value="JUVENIL" id="JUVENIL" /> Juvenil</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="INTERMEDIO" value="INTERMEDIO" id="INTERMEDIO" /> Intermedio</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="SENIOR" value="SENIOR" id="SENIOR" /> Senior</label>
-                    </form>
-    
-                    <p>Filtrar por cantidad de jugadores:</p>
-                    
-                    <form>
-                        <label>
-                        <input type="checkbox" name="CINCO" value="CINCO" id="CINCO" /> 5</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="SIETE" value="SIETE" id="SIETE" /> 7</label>
-                        <br>
-                        <label>
-                        <input type="checkbox" name="ONCE" value="ONCE" id="ONCE" /> 11</label>
-                    </form>
+            <aside>
+                <div class="tablas">
+                    <table>
+                        <thead>
+                            <th colspan="3">Equipos disponibles</th>
+                                <tr>
+                                    <th>Nombre del Equipo</th>
+                                    <th>Teléfono Capitán</th>
+                                    <th>Teléfono Co Capitán</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                <tr th:each="equipo : ${equipos}">
+                                    <td class="equipo" th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}" th:text="${equipo.nombre}"></td>
+                                    <td class="equipo" th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}" th:text="${equipo.numero1}"></td>
+                                    <td class="equipo" th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}" th:text="${equipo.numero2}"></td>
+                                </tr>  
+                        </tbody>
+                    </table>
                 </div>
-    
-            </div>
-        
-            <div class="tablas">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nombre del Equipo</th>
-                            <th>Teléfono Capitán</th>
-                            <th>Teléfono Co Capitán</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="equipo : ${equipos}">
-                            <td class="equipo" th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}" th:text="${equipo.nombre}"></td>
-                            <td class="equipo" th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}" th:text="${equipo.numero1}"></td>
-                            <td class="equipo" th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}" th:text="${equipo.numero2}"></td>
-                        </tr>  
-                    </tbody>
-                </table>
-            </div>
+            </aside>
             
         </main>
     

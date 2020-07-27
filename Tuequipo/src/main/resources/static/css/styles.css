@@ -159,12 +159,34 @@ body{
     background: whitesmoke;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
-.listanav{
-    color: white;
-    font-size: 28px;
-    font-weight: 700;
+
+article{
+    height: 430px;
+    width: 500px;
+    float: left;
+    position: relative;
+    margin-left: 2px;
+    margin-top: 15vh;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
+aside{
+    height: auto;
+    width: 400px;
+    float: right;
+    color: white;
+    font: blood;
+    position: relative;
+    margin-right: 10px;
+    margin-top: 15vh;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.p{
+    color: orange;
+    line-height: 50px;
+    text-align: left;
+}
 header h1{
     text-align: left;
     float: left;
@@ -181,35 +203,38 @@ nav{
 }
 
 .tablas{
-        width: 50%;
+        width: 100%;
         float: left;
 }
+
 .filtros{
-        width: 50%;
+        width: 100%;
         float: left;
+        color: white;
 }
 .filtros h3{
-        text-align: start;
+        text-align: left;
 }
 .filtros-izq{
-        width: 25%;
+        width: 50%;
         float: left;
 }
 .filtros-der{
-        width: 75%;
+        width: 50%;
         float: left;
 }
 .table, td, th {  
         border: 1px solid #ddd;
-        text-align: left;
+        text-align: center;
 }
-.table {
+.filtros table {
         border-collapse: collapse;
         width: auto;
 }
 .th, td {
             padding: 10px;
-        }
+            text-align: left;
+}
 
 
 @media (max-width: 450px){
