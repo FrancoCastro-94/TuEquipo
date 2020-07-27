@@ -96,7 +96,7 @@ public class EquipoServicio implements UserDetailsService {
             equipo.setZona(zona);
             equipo.setDia(dia);
             equipo.setCantidadJugadores(cantidadJugadores);
-            
+           
             if(!archivo.isEmpty()){
                 Foto foto = fotoServicio.actualizar(equipo.getFoto().getId(), archivo);
                 equipo.setFoto(foto);
@@ -134,6 +134,15 @@ public class EquipoServicio implements UserDetailsService {
         return equipoRepositorio.buscarEquipoDisponible();
     }
 
+    @Transactional
+    public void eliminarEquipo(String nombre) throws ErrorServicio {
+        Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
+        if (respuesta.isPresent()) {
+            Equipo equipo = respuesta.get();
+            equipoRepositorio.delete(equipo);
+        }
+    }
+    
     @Transactional
     public void bajaEquipo(String nombre) throws ErrorServicio {
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);

@@ -33,7 +33,7 @@
                 <div>
                     <h3 class="tituloRegistro">Modifique su Perfil ♥ ♥ ♥</h3>
                     <div>    
-     
+                        
                     </div>
                     <div class="foto">
                         <img th:src="@{/cargar/__${equipo.foto.id}__}" width="100px" height="100px" >
@@ -85,8 +85,13 @@
                         <p th:text="${exito}" style="color:white;"></p>
 
                     </form>
-
+                    
                 </div>
+                <form th:action="@{/usuario/eliminar-perfil}" method="POST">
+                    <input type="hidden" name="nombre" th:value="${equipo.nombre}">
+                    <button type="submit"> Eliminar equipo </button> 
+                </form>
+                
             </main>
             <!--footer>
                 <div>

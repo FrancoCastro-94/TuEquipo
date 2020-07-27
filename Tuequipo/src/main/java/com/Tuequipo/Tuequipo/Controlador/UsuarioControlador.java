@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,7 +48,19 @@ public class UsuarioControlador {
             session.setAttribute("usuariosession", equipo);
             return "perfil.html";
         }
+        }
+    
+    @PostMapping("/eliminar-perfil")
+    public String eliminar (ModelMap modelo, HttpSession session, @RequestParam String nombre){
+        try {
+            equipoServicio.eliminarEquipo(nombre);
+            return "index.html";
+        } catch (ErrorServicio ex) {
+            System.out.println(ex.getMessage());
+            return "perfil.html";
+        }
         
     }
     
 }
+
