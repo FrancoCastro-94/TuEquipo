@@ -144,7 +144,7 @@ public class EquipoServicio implements UserDetailsService {
     }
     
     @Transactional
-    public void bajaEquipo(String nombre) throws ErrorServicio {
+    public void deshabilitar(String nombre) throws ErrorServicio {
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
         if (respuesta.isPresent()) {
             Equipo equipo = respuesta.get();
