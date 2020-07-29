@@ -243,8 +243,10 @@ nav{
 }
 
 .tablas{
+        height: 430px;
         width: 100%;
         float: left;
+        overflow: scroll;
 }
 
 .filtros{
@@ -272,8 +274,8 @@ nav{
         width: auto;
 }
 .th, td {
-            padding: 10px;
-            text-align: left;
+        padding: 10px;
+        text-align: left;
 }
 
 

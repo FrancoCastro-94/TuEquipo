@@ -69,10 +69,9 @@ public class EquipoServicio implements UserDetailsService {
         Foto foto = fotoServicio.guardar(archivo);
         equipo.setFoto(foto);
         
-        String to = mail;
         String subject = "Inscripcion en tu equipo";
         String content = "Gracias por registrarte!";        
-        sendEmail(mail, to, subject, content);
+        //sendEmail(mail, subject, content);
 
         equipoRepositorio.save(equipo);
     }
@@ -139,6 +138,9 @@ public class EquipoServicio implements UserDetailsService {
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
         if (respuesta.isPresent()) {
             Equipo equipo = respuesta.get();
+            String subject = "Se elimino tu equipo";
+            String content = "Tu equipo fue eliminado, esperamos que pronto vuelvas a registrarte :(";        
+            sendEmail(equipo.getMail(), subject, content);
             equipoRepositorio.delete(equipo);
         }
     }
@@ -204,7 +206,7 @@ public class EquipoServicio implements UserDetailsService {
         }
     }
 
-     public void sendEmail(String mail, String to, String subject, String content) {
+     public void sendEmail(String mail, String subject, String content) {
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(mail);
         email.setSubject(subject);
