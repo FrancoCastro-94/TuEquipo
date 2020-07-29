@@ -124,15 +124,17 @@ public class EquipoServicio implements UserDetailsService {
         }
     }
 
-    public Equipo buscarPorId(String nombre) {
+    @Transactional
+    public void deshabilitar(String nombre) throws ErrorServicio {
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
-        return respuesta.get();
+        if (respuesta.isPresent()) {
+            Equipo equipo = respuesta.get();
+            equipo.setBaja(new Date());
+            equipo.setDisponible(Boolean.FALSE);
+            equipoRepositorio.save(equipo);
+        }
     }
     
-    public List<Equipo> buscarDisponibles(){
-        return equipoRepositorio.buscarEquipoDisponible();
-    }
-
     @Transactional
     public void eliminarEquipo(String nombre) throws ErrorServicio {
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
@@ -145,15 +147,13 @@ public class EquipoServicio implements UserDetailsService {
         }
     }
     
-    @Transactional
-    public void deshabilitar(String nombre) throws ErrorServicio {
+    public Equipo buscarPorId(String nombre) {
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
-        if (respuesta.isPresent()) {
-            Equipo equipo = respuesta.get();
-            equipo.setBaja(new Date());
-            equipo.setDisponible(Boolean.FALSE);
-            equipoRepositorio.save(equipo);
-        }
+        return respuesta.get();
+    }
+    
+    public List<Equipo> buscarDisponibles(){
+        return equipoRepositorio.buscarEquipoDisponible();
     }
 
     private void validar(String nombre,  String clave1, String clave2, String telefono1, String telefono2) throws ErrorServicio { 
@@ -206,7 +206,7 @@ public class EquipoServicio implements UserDetailsService {
         }
     }
 
-     public void sendEmail(String mail, String subject, String content) {
+    public void sendEmail(String mail, String subject, String content) {
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(mail);
         email.setSubject(subject);
