@@ -28,7 +28,7 @@
 
                     <p th:if="${error !=null}" th:text="${error}" class="errorRegistro"></p>
 
-                    <input class="formularioRegistro" type="text" placeholder="Nombre Equipo" name="nombre"
+                    <input class="formularioRegistro" type="text" placeholder="Nombre Equipo" maxlength="20" name="nombre"
                         required  th:value="${nombre}"><br>
                     <input class="formularioRegistro" type="mail" placeholder="Mail" name="mail" required th:value="${mail}"><br>
                     <input class="formularioRegistro" type="tel" placeholder="Telefono capitan" name="telefono1"
@@ -43,7 +43,7 @@
             </div>
             <div class="formulario1">
                 <select class="formularioRegistro" name="turno" id="turno">
-                    <option value="MAÑANA">MAÑANA</option>
+                    <option value="MANANA">MAÑANA</option>
                     <option value="TARDE">TARDE</option>
                     <option value="NOCHE">NOCHE</option>
                 </select><br>
