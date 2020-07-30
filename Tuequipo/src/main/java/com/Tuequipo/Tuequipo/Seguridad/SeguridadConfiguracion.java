@@ -17,16 +17,13 @@ public class SeguridadConfiguracion extends WebSecurityConfigurerAdapter {
     
     @Autowired
     public EquipoServicio equipoServicio;
-    
-    
+       
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .userDetailsService(equipoServicio)
             .passwordEncoder(new BCryptPasswordEncoder());
     }
-    
-    
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -44,29 +41,8 @@ public class SeguridadConfiguracion extends WebSecurityConfigurerAdapter {
                                 .permitAll()
                         .and().logout()
                                 .logoutUrl("/logout")
-                                .logoutSuccessUrl("/")
                                 .permitAll()
-                                .and().csrf().disable();
+                        .and().csrf().disable();
             
     }
-//@Override
-//protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeRequests()
-//                .antMatchers("/css/*", "/js/*", "/img/*").permitAll()
-//                .and().formLogin()
-//                .loginPage("/Registro")
-//                .loginProcessingUrl("/")
-//                .usernameParameter("nombre")
-//                .passwordParameter("clave")
-////                .defaultSuccessUrl("/loginsuccess")
-//                .failureUrl("/")
-//                .permitAll()
-//                .and().logout()
-////                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/")
-//                .permitAll()
-//                .and().csrf()
-//                .disable();
-//    }
 }

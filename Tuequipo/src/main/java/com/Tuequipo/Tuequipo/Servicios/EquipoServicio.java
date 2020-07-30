@@ -45,8 +45,11 @@ public class EquipoServicio implements UserDetailsService {
 
     @Transactional
     public void cargaEquipo(MultipartFile archivo, String nombre, String mail, String descripcion, String clave1, String clave2, String telefono1, String telefono2, Turno turno, Zonas zona, Dias dia, Tipo tipo, Categoria categoria, CantidadJugadores cantidadJugadores) throws ErrorServicio {
+        
         validar(nombre, clave1, clave2, telefono1, telefono2);
+        
         Equipo equipo = new Equipo();
+        
         equipo.setNombre(nombre);
         equipo.setMail(mail);
         equipo.setDescripcion(descripcion);
@@ -62,24 +65,29 @@ public class EquipoServicio implements UserDetailsService {
         equipo.setCantidadJugadores(cantidadJugadores);
         equipo.setDisponible(Boolean.TRUE);
         equipo.setAlta(new Date());
+        
         Foto foto = fotoServicio.guardar(archivo);
         equipo.setFoto(foto);
-        String to = mail;
+        
         String subject = "Inscripcion en tu equipo";
-        String content = "Gracias por registrarte! El nombre de tu equipo es: " + equipo.getNombre();        
-        sendEmail(mail, to, subject, content);
+
+        String content = "Gracias por registrarte!";        
+        //sendEmail(mail, subject, content);
+
 
         equipoRepositorio.save(equipo);
     }
 
     @Transactional
-    public void modificarEquipo(MultipartFile archivo, String nombre, String mail, String descripcion, String clave1, String clave2, String telefono1, String telefono2, Turno turno, Zonas zona, Dias dia, Tipo tipo, Categoria categoria, CantidadJugadores cantidadJugadores, Boolean disponible) throws ErrorServicio {
-        validar(nombre, clave1, clave2, telefono1, telefono2);
+    public void modificarEquipo(MultipartFile archivo, String nombre, String descripcion, String clave1, String clave2, String telefono1, String telefono2, Turno turno, Zonas zona, Dias dia, CantidadJugadores cantidadJugadores) throws ErrorServicio {
+        
+        revalidar( clave1, clave2, telefono1, telefono2);
+        
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
         if (respuesta.isPresent()) {
+            
             Equipo equipo = respuesta.get();
-            equipo.setNombre(nombre);
-            equipo.setMail(mail);
+            
             equipo.setDescripcion(descripcion);
             String encriptada = new BCryptPasswordEncoder().encode(clave1);
             equipo.setClave(encriptada);
@@ -88,17 +96,13 @@ public class EquipoServicio implements UserDetailsService {
             equipo.setTurno(turno);
             equipo.setZona(zona);
             equipo.setDia(dia);
-            equipo.setTipo(tipo);
-            equipo.setCategoria(categoria);
             equipo.setCantidadJugadores(cantidadJugadores);
-            equipo.setDisponible(disponible);
-            String idFoto = null;
-            if (equipo.getFoto() != null) {
-                idFoto = equipo.getFoto().getId();
+           
+            if(!archivo.isEmpty()){
+                Foto foto = fotoServicio.actualizar(equipo.getFoto().getId(), archivo);
+                equipo.setFoto(foto);
             }
-            Foto foto = fotoServicio.actualizar(idFoto, archivo);
-            equipo.setFoto(foto);
-
+            
             equipoRepositorio.save(equipo);
         } else {
             throw new ErrorServicio("No se encontro el equipo solicitado");
@@ -111,24 +115,19 @@ public class EquipoServicio implements UserDetailsService {
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
 
         if (respuesta.isPresent()) {
-
             Equipo equipo = respuesta.get();
+            
             equipo.setBaja(null);
             equipo.setDisponible(Boolean.TRUE);
+            
             equipoRepositorio.save(equipo);
-
         } else {
             throw new ErrorServicio("No se encontro el equipo solicitado");
         }
     }
 
-    public Equipo buscarPorId(String nombre) {
-        Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
-        return respuesta.get();
-    }
-
     @Transactional
-    public void bajaEquipo(String nombre) throws ErrorServicio {
+    public void deshabilitar(String nombre) throws ErrorServicio {
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
         if (respuesta.isPresent()) {
             Equipo equipo = respuesta.get();
@@ -137,14 +136,46 @@ public class EquipoServicio implements UserDetailsService {
             equipoRepositorio.save(equipo);
         }
     }
+    
+    @Transactional
+    public void eliminarEquipo(String nombre) throws ErrorServicio {
+        Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
+        if (respuesta.isPresent()) {
+            Equipo equipo = respuesta.get();
+            String subject = "Se elimino tu equipo";
+            String content = "Tu equipo fue eliminado, esperamos que pronto vuelvas a registrarte :(";        
+            sendEmail(equipo.getMail(), subject, content);
+            equipoRepositorio.delete(equipo);
+        }
+    }
+    
+    public Equipo buscarPorId(String nombre) {
+        Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
+        return respuesta.get();
+    }
+    
+    public List<Equipo> buscarDisponibles(){
+        return equipoRepositorio.buscarEquipoDisponible();
+    }
 
-    private void validar(String nombre,  String clave1, String clave2, String telefono1, String telefono2) throws ErrorServicio {
-        
+    private void validar(String nombre,  String clave1, String clave2, String telefono1, String telefono2) throws ErrorServicio { 
         Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
         if (respuesta.isPresent()){
             throw new ErrorServicio("Ese nombre se encuentra en uso");
         }
         
+        if ( clave1.length() <= 6) {
+            throw new ErrorServicio("La clave debe tener más de 6 caracteres");
+        }
+        if (!clave2.equals(clave1)) {
+            throw new ErrorServicio("Las claves deben coincidir");
+        }
+        if (telefono2.equals(telefono1)) {
+            throw new ErrorServicio("Los numeros de telefono deben ser distintos");
+        }
+    }
+    
+    private void revalidar(  String clave1, String clave2, String telefono1, String telefono2) throws ErrorServicio {
         if ( clave1.length() <= 6) {
             throw new ErrorServicio("La clave debe tener más de 6 caracteres");
         }
@@ -172,13 +203,12 @@ public class EquipoServicio implements UserDetailsService {
 
             User user = new User(equipo.getNombre(), equipo.getClave(), permisos);
             return user;
-
         } else {
             return null;
         }
     }
 
-     public void sendEmail(String mail, String to, String subject, String content) {
+    public void sendEmail(String mail, String subject, String content) {
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(mail);
         email.setSubject(subject);
