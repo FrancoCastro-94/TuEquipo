@@ -66,9 +66,10 @@ public class EquipoServicio implements UserDetailsService {
         equipo.setDisponible(Boolean.TRUE);
         equipo.setAlta(new Date());
         
-        Foto foto = fotoServicio.guardar(archivo);
-        equipo.setFoto(foto);
-        
+        if(!archivo.isEmpty()){
+            Foto foto = fotoServicio.guardar(archivo);
+            equipo.setFoto(foto);
+        }
         String subject = "Inscripcion en tu equipo";
 
         String content = "Gracias por registrarte!";        
