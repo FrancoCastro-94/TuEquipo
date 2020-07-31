@@ -1494,13 +1494,12 @@ div h2{
         top: 50%;
     }
 
-    /* PERFIL */
+     /*PERFIL 
 
-    /* BUSCADOR */
-
+     BUSCADOR */
 }
 
-    /* article{
+     article{
         height: 430px;
         width: 500px;
         float: left;
@@ -1527,12 +1526,14 @@ div h2{
         line-height: 50px;
         text-align: left;
     }
+    /*
     header h1{
         text-align: left;
         float: left;
         margin-left: 40px;
         line-height: 100px;
     }
+    */
 
     .tablas{
         width: 100%;
@@ -1558,7 +1559,7 @@ div h2{
     .table, td, th {  
         border: 1px solid #ddd;
         text-align: center;
-
+    }
     .filtros table {
             border-collapse: collapse;
             width: auto;
@@ -1566,4 +1567,5 @@ div h2{
     .th, td {
             padding: 10px;
             text-align: left;
-    } */
+    }
+   

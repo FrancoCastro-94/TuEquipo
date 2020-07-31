@@ -137,6 +137,7 @@
     
             <aside>
                 <div class="tablas">
+                    
                     <table>
                         <thead>
                             <th colspan="4">Equipos disponibles</th>
@@ -149,8 +150,10 @@
                         </thead>
                         <tbody>
                                 <tr th:each="equipo : ${equipos}">
-                                    <td class="equipo" th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}"> <img th:src="@{/cargar/__${equipo.foto.id}__}" width="65px" height="65px"></td>
-                                    <td class="equipo" th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}" th:text="${equipo.nombre}"></td>
+                                    <td class="equipo" th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}"> 
+                                        <img th:if="${equipo.foto != null}" th:src="@{/cargar/__${equipo.foto.id}__}" width="65px" height="65px">
+                                        <img th:unless="${equipo.foto != null}" src="/img/logo.jpg" width="65px" height="65px"></td>
+                                        <td class="equipo" th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}" th:text="${equipo.nombre}"></td>
                                     <td class="equipo" th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}" th:text="${equipo.numero1}"></td>
                                     <td class="equipo" th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}" th:text="${equipo.numero2}"></td>
                                 </tr>  
