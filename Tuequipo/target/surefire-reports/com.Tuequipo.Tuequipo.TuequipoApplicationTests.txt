@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.Tuequipo.Tuequipo.TuequipoApplicationTests
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.455 s - in com.Tuequipo.Tuequipo.TuequipoApplicationTests
-=======
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.734 s - in com.Tuequipo.Tuequipo.TuequipoApplicationTests
->>>>>>> 8cfbce50438edf4c2cbd405c3e8a4feb8ab7432e
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.669 s - in com.Tuequipo.Tuequipo.TuequipoApplicationTests
