@@ -3,6 +3,7 @@ package com.Tuequipo.Tuequipo.Servicios;
 import com.Tuequipo.Tuequipo.Errores.ErrorServicio;
 import com.Tuequipo.Tuequipo.Repositorios.FotoRepositorio;
 import com.Tuequipo.Tuequipo.entidades.Foto;
+import java.io.IOException;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,28 +38,26 @@ public class FotoServicio {
     @Transactional
     public Foto actualizar(String idFoto, MultipartFile archivo) throws ErrorServicio {
         try {
-            Optional<Foto> respuesta = fotoRepositorio.findById(idFoto);
-            if (respuesta.isPresent()) {
-
-                Foto foto = respuesta.get();
-                foto.setMime(archivo.getContentType());
-                foto.setNombre(archivo.getName());
-                foto.setContenido(archivo.getBytes());
-
-                return fotoRepositorio.save(foto);
-            } else {
-                Foto foto = new Foto();
-                foto.setMime(archivo.getContentType());
-                foto.setNombre(archivo.getName());
-                foto.setContenido(archivo.getBytes());
-
-                return fotoRepositorio.save(foto);
+            
+            Foto foto = new Foto();
+                
+            if(idFoto != null){
+                Optional<Foto> respuesta = fotoRepositorio.findById(idFoto);
+                if(respuesta.isPresent()){
+                    foto = respuesta.get();
+                }
             }
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
+            
+            foto.setMime(archivo.getContentType());
+            foto.setNombre(archivo.getName());
+            foto.setContenido(archivo.getBytes());
 
+            return fotoRepositorio.save(foto);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+            return null;
         }
-        return null;
-        }
-        }
+        
+    }
+}
 

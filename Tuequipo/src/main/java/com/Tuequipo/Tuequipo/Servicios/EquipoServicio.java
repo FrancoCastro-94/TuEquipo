@@ -100,7 +100,13 @@ public class EquipoServicio implements UserDetailsService {
             equipo.setCantidadJugadores(cantidadJugadores);
            
             if(!archivo.isEmpty()){
-                Foto foto = fotoServicio.actualizar(equipo.getFoto().getId(), archivo);
+                String idFoto = null;
+                
+                if(equipo.getFoto() != null){
+                    idFoto = equipo.getFoto().getId();
+                }
+
+                Foto foto = fotoServicio.actualizar(idFoto, archivo);
                 equipo.setFoto(foto);
             }
             
