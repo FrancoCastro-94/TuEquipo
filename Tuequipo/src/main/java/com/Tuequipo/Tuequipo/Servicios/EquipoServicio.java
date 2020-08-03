@@ -70,9 +70,9 @@ public class EquipoServicio implements UserDetailsService {
             Foto foto = fotoServicio.guardar(archivo);
             equipo.setFoto(foto);
         }
-        String subject = "Inscripcion en tu equipo";
+        String subject = "Inscripcion de tu equipo";
 
-        String content = "Gracias por registrarse" + equipo.getNombre() + "!";        
+        String content = "Gracias por registrarse " + equipo.getNombre() + "!";        
         sendEmail(mail, subject, content);
 
 

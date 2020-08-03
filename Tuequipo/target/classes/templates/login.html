@@ -40,7 +40,7 @@
             <div class="recuperarContraseña" id="sendPass">
                 <form action="/recuperarPass" method="POST">
                     <input class="formularioLogin1" type="text" placeholder="Usuario" name="name"><br>
-                    <input class="formularioLogin4" type="submit" value="Reestablecer">
+                    <input class="formularioLogin4" type="submit" value="Reestablecer" onclick="alerta()">
                 </form>
             </div>
         </main>
@@ -59,6 +59,10 @@
             } else {
                 div.style.display = 'block';
             }
+        }
+        
+        function alerta(){
+            alert("Se ha enviado un codigo de recuperacion a su email");
         }
     </script>
 
