@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Equipo, Encontra tu proximo rival</title>
     <link href="/css/styles.css" rel="stylesheet">
+    <link rel="icon" href="/img/friedpotato.ico" type="image/x-icon">
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
@@ -20,7 +21,7 @@
             <nav>
                 <div>
                     <ul>
-                        <li>
+                        <li class="cajaDesplegable">
                             <p class="tituloPerfil">Perfil</p>
                             <ul class="listaPerfil">
                                 <div class="cajaPerfil">
@@ -75,9 +76,9 @@
                                 <div class="cajaPerfil4">
                                     <form class="eliminarEquipo" th:action="@{/usuario/eliminar-perfil}" method="POST">
                                         <input type="hidden" name="nombre" th:value="${session.usuariosession.nombre}">
-                                        <a class="eliminarEquipo1" th:data-confirm-delete="|¿Estás seguro que quieres eliminar tu equipo ${session.usuariosession.nombre}?|"
+                                        <button class="eliminarEquipo1" th:data-confirm-delete="|¿Estás seguro que quieres eliminar tu equipo ${session.usuariosession.nombre}?|"
                                             onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">Eliminar equipo
-                                        </a>
+                                        </button>
                                     </form>
                                 </div>
                                 <div class="cajaPerfil5">
@@ -215,7 +216,7 @@
                             </form>
 
                             <b>
-                                <p class="p">Filtrar por cant de jugadores:</p>
+                                <p class="p">Filtrar por cantidad de jugadores:</p>
                             </b>
                             <form>
                                 <label>
@@ -262,13 +263,13 @@
                                     th:text="${equipo.nombre}"></td>
                                 <td class="equipo"
                                     th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}">
-                                    <a th:text="${equipo.numero1}"
-                                        th:href="@{'https://api.whatsapp.com/send?phone=549' + ${equipo.numero1} + '&text=Hola!%20Quiero%20jugar%20contra%20ustedes!'}"></a>
+                                   <img src="/img/imagen-whatsapp.jpg" width="8px" heidt="8px" alt=""> <a class="numeroTel" target="blank"  th:text="${equipo.numero1}"
+                                        th:href="@{'https://api.whatsapp.com/send?phone=549' + ${equipo.numero1} + '&text=Hola!%20Quiero%20jugar%20contra%20ustedes!'}">
                                 </td>
                                 <td class="equipo"
                                     th:attr="data-id=${equipo.nombre},data-category=${equipo.zona + ' '} + ${equipo.tipo + ' '} + ${equipo.turno + ' '} + ${equipo.dia + ' '} + ${equipo.categoria + ' '} + ${equipo.cantidadJugadores}">
-                                    <a th:text="${equipo.numero2}"
-                                        th:href="@{'https://api.whatsapp.com/send?phone=549' + ${equipo.numero2} + '&text=Hola!%20Quiero%20jugar%20contra%20ustedes!'}"></a>
+                                    <img src="/img/imagen-whatsapp.jpg" width="8px" heidt="8px" alt=""> <a class="numeroTel" target="blank" th:text="${equipo.numero2}"
+                                        th:href="@{'https://api.whatsapp.com/send?phone=549' + ${equipo.numero2} + '&text=Hola!%20Quiero%20jugar%20contra%20ustedes!'}">
                                 </td>
 
                             </tr>

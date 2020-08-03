@@ -445,6 +445,7 @@ a.modificarPerfil1 {
 }
 
 form.eliminarEquipo{
+    color: black;
     position: relative;
     float: left;
     width: 100%;
@@ -453,8 +454,10 @@ form.eliminarEquipo{
     margin: 5px;
 }
 
-a.eliminarEquipo1{
-    color: black;
+button.eliminarEquipo1{
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
 }
 
 li.botonSalir{
@@ -550,6 +553,12 @@ a.botonSalir1{
     transform: none;
 }
 
+.exito{
+    font-size: 1em;
+    color: white;
+    font-weight: 700;
+}
+
 
 /* BUSCADOR */
 
@@ -594,6 +603,10 @@ header h1{
     width: 100%;
     float: left;
     overflow: scroll;
+}
+
+.numeroTel{
+    color: white
 }
 
 .filtros{
@@ -1025,6 +1038,7 @@ header h1{
     }
 
     form.eliminarEquipo{
+        color: black;
         position: relative;
         float: left;
         width: 100%;
@@ -1033,8 +1047,10 @@ header h1{
         margin: 5px;
     }
 
-    a.eliminarEquipo1{
-        color: black;
+    button.eliminarEquipo1{
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
     }
 
     li.botonSalir{
@@ -1131,6 +1147,12 @@ header h1{
         top: 0;
         left: 0;
         transform: none;
+    }
+
+    .exito{
+        font-size: 1em;
+        color: white;
+        font-weight: 700;
     }
 
 
@@ -1639,6 +1661,7 @@ header h1{
     }
 
     form.eliminarEquipo{
+        color: black;
         position: relative;
         float: left;
         width: 100%;
@@ -1647,8 +1670,10 @@ header h1{
         margin: 5px;
     }
 
-    a.eliminarEquipo1{
-        color: black;
+    button.eliminarEquipo1{
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
     }
 
     li.botonSalir{
@@ -1746,6 +1771,12 @@ header h1{
         left: 0;
         transform: none;
     }
+    
+    .exito{
+        font-size: 1em;
+        color: white;
+        font-weight: 700;
+    }
 
 
     /* BUSCADOR */
@@ -1753,7 +1784,8 @@ header h1{
 
     article{
         height: 50%;
-        width: 48%;
+        width: 36%;
+        margin-left: 60px;
         float: left;
         position: relative;
         margin-top: 5vh;
@@ -2250,6 +2282,7 @@ header h1{
     }
 
     form.eliminarEquipo{
+        color: black;
         position: relative;
         float: left;
         width: 100%;
@@ -2258,8 +2291,10 @@ header h1{
         margin: 5px;
     }
 
-    a.eliminarEquipo1{
-        color: black;
+    button.eliminarEquipo1{
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
     }
 
     li.botonSalir{
@@ -2358,13 +2393,20 @@ header h1{
         transform: none;
     }
     
+    .exito{
+        font-size: 1em;
+        color: white;
+        font-weight: 700;
+    }
+
 
     /* BUSCADOR */
 
 
     article{
         height: 50%;
-        width: 48%;
+        width: 36%;
+        margin-left: 60px;
         float: left;
         position: relative;
         margin-top: 5vh;
@@ -2860,6 +2902,7 @@ header h1{
     }
 
     form.eliminarEquipo{
+        color: black;
         position: relative;
         float: left;
         width: 100%;
@@ -2868,8 +2911,10 @@ header h1{
         margin: 5px;
     }
 
-    a.eliminarEquipo1{
-        color: black;
+    button.eliminarEquipo1{
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
     }
 
     li.botonSalir{
@@ -2968,13 +3013,20 @@ header h1{
         transform: none;
     } 
 
+    .exito{
+        font-size: 1em;
+        color: white;
+        font-weight: 700;
+    }
+
 
     /* BUSCADOR */
 
 
     article{
         height: 50%;
-        width: 48%;
+        width: 36%;
+        margin-left: 60px;
         float: left;
         position: relative;
         margin-top: 5vh;
@@ -3472,6 +3524,7 @@ header h1{
     }
 
     form.eliminarEquipo{
+        color: black;
         position: relative;
         float: left;
         width: 100%;
@@ -3480,8 +3533,10 @@ header h1{
         margin: 5px;
     }
 
-    a.eliminarEquipo1{
-        color: black;
+    button.eliminarEquipo1{
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
     }
 
     li.botonSalir{
@@ -3580,13 +3635,20 @@ header h1{
         transform: none;
     }
 
+    .exito{
+        font-size: 1em;
+        color: white;
+        font-weight: 700;
+    }
+
 
     /* BUSCADOR */
 
 
     article{
         height: 50%;
-        width: 48%;
+        width: 36%;
+        margin-left: 60px;
         float: left;
         position: relative;
         margin-top: 5vh;
@@ -4084,6 +4146,7 @@ header h1{
     }
 
     form.eliminarEquipo{
+        color: black;
         position: relative;
         float: left;
         width: 100%;
@@ -4092,8 +4155,10 @@ header h1{
         margin: 5px;
     }
 
-    a.eliminarEquipo1{
-        color: black;
+    button.eliminarEquipo1{
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
     }
 
     li.botonSalir{
@@ -4192,13 +4257,20 @@ header h1{
         transform: none;
     } 
 
+    .exito{
+        font-size: 1em;
+        color: white;
+        font-weight: 700;
+    }
+
 
     /* BUSCADOR */
 
 
     article{
         height: 50%;
-        width: 48%;
+        width: 36%;
+        margin-left: 60px;
         float: left;
         position: relative;
         margin-top: 5vh;
@@ -4696,16 +4768,21 @@ header h1{
     }
 
     form.eliminarEquipo{
+        color: black;
         position: relative;
         float: left;
         width: 100%;
         font-weight: 600;
         text-align: left;
         margin: 5px;
+        margin-left: 1px;
+        font-family: arial;
     }
 
-    a.eliminarEquipo1{
-        color: black;
+    button.eliminarEquipo1{
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
     }
 
     li.botonSalir{
@@ -4719,6 +4796,7 @@ header h1{
 
     a.botonSalir1{
         color: black;
+
     }
 
 
@@ -4804,13 +4882,20 @@ header h1{
         transform: none;
     }
 
+    .exito{
+        font-size: 1em;
+        color: white;
+        font-weight: 700;
+    }
+
 
     /* BUSCADOR */
 
 
     article{
         height: 50%;
-        width: 48%;
+        width: 36%;
+        margin-left: 60px;
         float: left;
         position: relative;
         margin-top: 5vh;
@@ -4887,5 +4972,5 @@ header h1{
             padding: 10px;
             text-align: center;
     }
-
 }
+

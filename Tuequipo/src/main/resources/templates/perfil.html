@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil</title>
     <link href="/css/styles.css" rel="stylesheet">
+    <link rel="icon" href="/img/friedpotato.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -27,7 +28,7 @@
             <nav class="navPerfil">
                 <div>
                     <ul>
-                        <li> <a class="listanav2" href="/logout"> Salir</a></li>
+                        <li> <a class="listanav2" href="/logout"> Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </nav>
@@ -80,7 +81,7 @@
                     <input class="formularioRegistro5" type="file" name="archivo" size="30"><br>
                     <input class="formularioRegistro4" type="submit" value="Actualizar datos">
 
-                    <p th:text="${exito}" style="color:white;"></p>
+                    <p class="exito" th:text="${exito}" style="color:white;"></p>
 
                 </form>
 
