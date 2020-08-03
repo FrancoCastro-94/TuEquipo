@@ -22,24 +22,27 @@
             </nav>
         </header>
         <main>
+            <div class="error">
+                <p th:if="${error !=null}" th:text="${error}" class="errorRegistro"></p>
+            </div>
             <h3 class="tituloRegistro">Nuevo Registro</h3>
             <div class="formulario">
                 <form action="/registrar" method="POST" enctype="multipart/form-data">
 
-                    <p th:if="${error !=null}" th:text="${error}" class="errorRegistro"></p>
-
-                    <input class="formularioRegistro" type="text" placeholder="Nombre Equipo" maxlength="20" name="nombre"
-                        required  th:value="${nombre}"><br>
-                    <input class="formularioRegistro" type="mail" placeholder="Mail" name="mail" required th:value="${mail}"><br>
+                    <input class="formularioRegistro" type="text" placeholder="Nombre Equipo" maxlength="20"
+                        name="nombre" required th:value="${nombre}"><br>
+                    <input class="formularioRegistro" type="email" placeholder="Mail" name="mail" required
+                        th:value="${mail}"><br>
                     <input class="formularioRegistro" type="tel" placeholder="Telefono capitan" name="telefono1"
                         required th:value="${telefono1}"><br>
                     <input class="formularioRegistro" type="tel" placeholder="Telefono co-capitan" name="telefono2"
                         required th:value="${telefono2}"><br>
-                    <input class="formularioRegistro" type="password" placeholder="Contraseña" name="clave1"
-                        required th:value="${clave1}"><br>
+                    <input class="formularioRegistro" type="password" placeholder="Contraseña" name="clave1" required
+                        th:value="${clave1}"><br>
                     <input class="formularioRegistro" type="password" placeholder="Repetir contraseña" name="clave2"
                         required th:value="${clave2}"><br>
-                    <input class="formularioRegistro" type="text" name="descripcion" th:value="${descripcion}"><br>
+                    <input class="formularioRegistro" type="text" name="descripcion"
+                        placeholder="Breve descripcion del equipo" th:value="${descripcion}"><br>
             </div>
             <div class="formulario1">
                 <select class="formularioRegistro" name="turno" id="turno">
@@ -84,11 +87,11 @@
                 </form>
             </div>
         </main>
-        <!--footer>
+        <footer>
             <div>
                 <p> Copyright © 2020 - Tu Equipo </p>
             </div>
-        </footer-->
+        </footer>
     </div>
 </body>
 

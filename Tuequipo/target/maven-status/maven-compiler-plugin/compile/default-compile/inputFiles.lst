@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\Mega Tecnologia\Desktop\Proyecto Final EGG\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Repositorios\FotoRepositorio.java
 C:\Users\Mega Tecnologia\Desktop\Proyecto Final EGG\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Enumeracion\Zonas.java
 C:\Users\Mega Tecnologia\Desktop\Proyecto Final EGG\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Seguridad\SeguridadConfiguracion.java
@@ -16,22 +15,3 @@ C:\Users\Mega Tecnologia\Desktop\Proyecto Final EGG\TuEquipo\Tuequipo\src\main\j
 C:\Users\Mega Tecnologia\Desktop\Proyecto Final EGG\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Repositorios\EquipoRepositorio.java
 C:\Users\Mega Tecnologia\Desktop\Proyecto Final EGG\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Entidades\Foto.java
 C:\Users\Mega Tecnologia\Desktop\Proyecto Final EGG\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Enumeracion\Tipo.java
-=======
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Controlador\UsuarioControlador.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Repositorios\FotoRepositorio.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Servicios\FotoServicio.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Servicios\EquipoServicio.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\TuequipoApplication.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Enumeracion\Zonas.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Controlador\Controlador.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Repositorios\EquipoRepositorio.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Enumeracion\Turno.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Enumeracion\Tipo.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Enumeracion\Categoria.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Errores\ErrorServicio.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Entidades\Equipo.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Enumeracion\Dias.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Seguridad\SeguridadConfiguracion.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Entidades\Foto.java
-C:\Users\Invitado ARTRANS\Documents\CURSO PROGRAMACION EGGTECH\TuEquipo\TuEquipo\Tuequipo\src\main\java\com\Tuequipo\Tuequipo\Enumeracion\CantidadJugadores.java
->>>>>>> 29f9b307a4ae99d9b04ab3aa604a1084155b001a

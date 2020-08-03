@@ -49,11 +49,6 @@ public class Controlador {
         return "Registro.html";
     }
 
-    @GetMapping("/Perfil")
-    public String miPerfil() {
-        return "perfil.html";
-    }
-
     @PostMapping("/registrar")
     public String cargaEquipo(ModelMap modelo, MultipartFile archivo, @RequestParam String nombre, @RequestParam String mail, @RequestParam String descripcion, @RequestParam String clave1, @RequestParam String clave2, @RequestParam String telefono1, @RequestParam String telefono2, @RequestParam Turno turno, @RequestParam Zonas zona, @RequestParam Dias dia, @RequestParam Tipo tipo, @RequestParam Categoria categoria, @RequestParam CantidadJugadores cantidadJugadores) {
         try {
