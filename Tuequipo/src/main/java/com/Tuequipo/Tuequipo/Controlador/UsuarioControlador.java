@@ -60,6 +60,7 @@ public class UsuarioControlador {
         }
         
     }
+    
     @PostMapping("/disponibilidad")
     public String disponibilidad(ModelMap modelo, HttpSession session, @RequestParam String nombre, @RequestParam Boolean disponible){
         Equipo equipo = equipoServicio.buscarPorId(nombre);
@@ -72,13 +73,13 @@ public class UsuarioControlador {
             modelo.addAttribute("equipo", equipo);
             session.setAttribute("usuariosession", equipo);
             
-            return "perfil.html";
+            return "redirect:/buscador";
         } catch (ErrorServicio ex) {
             System.out.println(ex.getMessage());
             modelo.addAttribute("equipo", equipo);
             session.setAttribute("usuariosession", equipo);
             
-            return "perfil.html";
+            return "buscador.html";
         }
     }
 

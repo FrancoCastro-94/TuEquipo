@@ -72,7 +72,7 @@ public class EquipoServicio implements UserDetailsService {
         }
         String subject = "Inscripcion en tu equipo";
 
-        String content = "Gracias por registrarte!";        
+        String content = "Gracias por registrarse" + equipo.getNombre() + "!";        
         //sendEmail(mail, subject, content);
 
 
@@ -147,6 +147,29 @@ public class EquipoServicio implements UserDetailsService {
             String content = "Tu equipo fue eliminado, esperamos que pronto vuelvas a registrarte :(";        
             sendEmail(equipo.getMail(), subject, content);
             equipoRepositorio.delete(equipo);
+        }
+    }
+    
+    @Transactional
+    public void renovarPass(String nombre) throws ErrorServicio {
+
+        String clave = "tuequipo1234";
+
+        Optional<Equipo> respuesta = equipoRepositorio.findById(nombre);
+
+        if (respuesta.isPresent()) {
+            Equipo equipo = respuesta.get();
+
+            String encriptada = new BCryptPasswordEncoder().encode(clave);
+            equipo.setClave(encriptada);
+
+            String subject = "Recuperación de contraseña";
+            String content = "Tu contraseña provisoria es " + clave;        
+            sendEmail(equipo.getMail(), subject, content);
+
+            equipoRepositorio.save(equipo);    
+        } else {
+            throw new ErrorServicio("No se encontro el equipo solicitado");
         }
     }
     

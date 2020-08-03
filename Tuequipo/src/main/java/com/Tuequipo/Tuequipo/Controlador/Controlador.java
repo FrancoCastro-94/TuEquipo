@@ -133,5 +133,16 @@ public class Controlador {
         headers.setContentType(MediaType.IMAGE_JPEG);
         return new ResponseEntity<>(foto.getContenido(), headers, HttpStatus.OK);
     }
+    
+    @PostMapping("/recuperarPass")
+    public String reestablecerPass(ModelMap modelo, @RequestParam String name){
+        try {
+            equipoServicio.renovarPass(name);
+            return "redirect:/login";
+        } catch (ErrorServicio ex) {
+            modelo.put("error", ex.getMessage());
+            return "login.html";
+        }
+    }
 
 }
